@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "genesis"
+version = "0.1.0"
+description = "Embodied AI framework for growing persistent, curiosity-driven intelligence"
+requires-python = ">=3.11"
+dependencies = [
+    # Perception
+    "ultralytics>=8.0",
+    "opencv-python>=4.8",
+    "numpy>=1.24",
+    # Audio
+    "openai-whisper",
+    "sounddevice",
+    # LLM
+    "anthropic>=0.30",
+    # API/Dashboard
+    "fastapi",
+    "uvicorn",
+    "websockets",
+    "jinja2",
+    # Data
+    "sentence-transformers",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

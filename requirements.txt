@@ -1,0 +1,24 @@
+# Perception
+ultralytics>=8.0
+opencv-python>=4.8
+numpy>=1.24
+
+# Audio
+openai-whisper
+sounddevice
+
+# LLM
+anthropic>=0.30
+
+# API/Dashboard
+fastapi
+uvicorn
+websockets
+jinja2
+
+# Data
+sentence-transformers
+
+# Dev
+pytest
+pytest-asyncio
