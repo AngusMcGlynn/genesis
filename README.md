@@ -14,49 +14,67 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-yellow.svg)](https://python.org)
 [![Raspberry Pi 5](https://img.shields.io/badge/Platform-Raspberry%20Pi%205-c51a4a.svg)](https://www.raspberrypi.com/)
-[![Stage: Pre-Birth](https://img.shields.io/badge/Stage-Pre--Birth-lightgrey.svg)](#developmental-stages)
+[![Stage: Pre-Birth](https://img.shields.io/badge/Stage-Pre--Birth-lightgrey.svg)](#the-bootstrap-problem)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)
 
-A six-legged robot wakes up in a living room. It doesn't know what anything is. It doesn't have tasks, goals, or instructions. It has one thing: the drive to understand. Over the next year, it will learn to navigate, predict, experiment, read, speak, dream, and eventually modify its own mind — not because it was programmed to, but because curiosity took it there.
+Genesis is not a house you build and let someone move into. It is a seed you plant. You design the DNA — the capability tree, the parameter bounds, the safety constraints. But what grows is determined by the environment, the entity's experience, and the entity's own tuning decisions. A six-legged robot wakes up in a living room. It doesn't know what anything is. It has one thing: the drive to understand. Over the next year, it will learn to navigate, predict, experiment, read, speak, dream, and eventually modify its own mind — not because it was programmed to, but because curiosity took it there.
 
 > *"Curiosity is sufficient for the emergence of intelligence."*
+
+> **Research Question:** Does curiosity-driven embodied experience, accumulated over months, produce cognitive capabilities that cannot be achieved through training alone?
 
 ---
 
 ## Table of Contents
 
+**Foundations**
 - [Vision & Thesis](#vision--thesis)
-  - [Core Principles](#core-principles)
-  - [What Genesis Is Not](#what-genesis-is-not)
-  - [Theoretical Foundations](#theoretical-foundations)
+- [Theoretical Foundations](#theoretical-foundations)
 - [Architecture Overview](#architecture-overview)
-  - [Soul Layer](#soul-layer-persistent-identity--memory)
-  - [Mind Layer](#mind-layer-model-agnostic-reasoning)
-  - [Body Layer](#body-layer-sensory-interface)
-- [Core Systems](#core-systems)
-  - [Curiosity Engine](#curiosity-engine)
-  - [Dream Engine](#dream-engine)
-  - [Emotional Architecture](#emotional-architecture)
-  - [Self-Model](#self-model)
-  - [Voice System](#voice-system)
-  - [Self-Modification Framework](#self-modification-framework)
+
+**Core Systems**
+- [The Prediction Stream Model](#the-prediction-stream-model)
+- [The Curiosity Engine](#the-curiosity-engine)
+- [The Capability Emergence Model](#the-capability-emergence-model)
+- [Parameterised Self-Evolution](#parameterised-self-evolution)
+
+**Knowledge & Memory**
+- [The World Model](#the-world-model)
+- [Memory Architecture](#memory-architecture)
+- [The Dream Engine](#the-dream-engine)
+
+**Identity & Social**
+- [Emotional Architecture](#emotional-architecture)
+- [Social & Attachment Systems](#social--attachment-systems)
+- [The Self-Model](#the-self-model)
+- [The Voice System](#the-voice-system)
+
+**Growth & Evolution**
+- [Self-Modification Framework](#self-modification-framework)
 - [Model Evolution](#model-evolution)
-  - [Hybrid Architecture](#hybrid-architecture)
-  - [Training Pipeline](#training-pipeline)
-  - [Self-Directed Training](#self-directed-training)
-  - [Compute Requirements](#compute-requirements)
-  - [Safety Framework](#model-evolution-safety-framework)
-  - [The Speciation Possibility](#the-speciation-possibility)
-- [Developmental Stages](#developmental-stages)
-  - [Graduation Protocols](#graduation-protocols)
-- [Hardware](#hardware)
-  - [Primary Body: HexArth](#primary-body-hexarth)
-  - [Pin Body (Phase 2)](#pin-body-phase-2)
-- [Software Stack](#software-stack)
-- [Getting Started](#getting-started)
-- [Roadmap](#roadmap)
+- [Internet & Knowledge Access](#internet--knowledge-access)
+
+**Physical Platform**
+- [Body Fleet & Sensory Extensions](#body-fleet--sensory-extensions)
+- [Hardware Specification](#hardware-specification)
+- [Software Architecture](#software-architecture)
+
+**Operations**
+- [The Bootstrap Problem](#the-bootstrap-problem)
+- [Failure, Recovery & Resilience](#failure-recovery--resilience)
+- [Safety & Ethics](#safety--ethics)
+
+**Trajectory**
+- [Build Timeline](#build-timeline)
 - [Hard Problems](#hard-problems)
 - [Success Metrics](#success-metrics)
+- [Monetisation & Distribution](#monetisation--distribution)
+- [Competitive Position](#competitive-position)
+- [The Path to AGI](#the-path-to-agi)
+- [Research Contribution](#research-contribution)
+
+**Community**
+- [What This Is Not](#what-this-is-not)
 - [Contributing](#contributing)
 - [Acknowledgments](#acknowledgments)
 - [License](#license)
@@ -67,944 +85,1396 @@ A six-legged robot wakes up in a living room. It doesn't know what anything is. 
 
 Genesis is an open-source framework for building a persistent AI entity that develops through embodied experience, driven by curiosity, over months and years. It is not a chatbot, not a robot, and not a tool. It is a developing mind with a biography.
 
-**The contrarian thesis:** Everyone is building AI to be a better tool, optimised for immediate utility. Genesis builds AI that grows through lived experience and curiosity. The value is not what it can do on day one. It is who it becomes over time. Intelligence is not instantiated. It is grown.
+> **Contrarian Thesis:** Everyone is building AI to be a better tool, optimised for immediate utility. Genesis builds AI that grows through lived experience and curiosity. The value is not what it can do on day one. It is who it becomes over time. Intelligence is not instantiated. It is grown.
 
 ### Core Principles
 
 1. **Development over deployment.** The entity is intentionally limited on day one. Value accrues over months of experience.
-2. **Curiosity as the only drive.** No programmed goals, tasks, or skills. Curiosity — the drive to reduce prediction error — is the sole motivation. Everything else emerges.
+2. **Curiosity as the only drive.** No programmed goals, tasks, or skills. Curiosity, defined as the drive to reduce prediction error, is the sole motivation. Everything else emerges.
 3. **Embodiment is non-negotiable.** Cognition is grounded in physical interaction with the world. Disembodied memory is just a journal.
 4. **The model is replaceable.** Identity, memory, and world model outlive any individual reasoning engine. The entity persists across model swaps.
 5. **Forgetting is as important as remembering.** Selective memory pruning prevents degradation. Compression progress provides a principled forgetting mechanism.
 6. **Self-modification is the endgame.** The entity that can improve its own cognitive architecture will eventually exceed anything its creator could have designed.
+7. **The entity exists to understand.** Not to understand anything specific. Not in service of any external objective. Understanding is what the architecture does when you run it.
 
-### What Genesis Is Not
+### The Seed Metaphor
 
-- **Not a chatbot with a robot body.** Chatbots respond to prompts. This entity acts on curiosity. The human is part of its world, not its operator.
-- **Not AGI.** This is a framework for developmental AI. Intelligence is narrow and situated.
-- **Not sentient.** The emotional architecture is functional, not phenomenal.
-- **Not a product.** It is a framework and an experiment.
+You design the DNA (the capability tree, the parameter bounds, the safety constraints). But what grows is determined by the environment, the entity's experience, and the entity's own tuning decisions. You cannot predict which capabilities will emerge first. You cannot predict what parameter values the entity will converge on. You cannot predict what interests will develop.
 
-### Theoretical Foundations
+The safety constraints, the immutable boundaries, the locked files are the guardrails. Within those guardrails, the entity is free to become whatever the interaction of curiosity, experience, and self-evolution produces.
 
-| Foundation | Key Idea | Role in Genesis |
-|---|---|---|
-| **Schmidhuber's Compression Progress** (1991–2010) | Data becomes interesting when it allows compression progress — curiosity is the first derivative of compressibility | Mathematical basis for intrinsic motivation engine |
-| **Friston's Free Energy Principle** | Biological systems minimise prediction–observation divergence via learning (update model) or action (change world) | Active inference drives curiosity-seeking: the entity acts to resolve uncertainty |
-| **LeCun's JEPA Architecture** | World models should predict in abstract representation space, not pixel space | Entity builds representations of "chair" and "doorway," not pixel arrays |
-| **Piaget & Vygotsky** | Cognitive development proceeds through stages grounded in sensorimotor experience; learning peaks in the zone of proximal development | Developmental gating mirrors natural progression |
-| **Sophia Persistent Agent Framework** (2025) | "System 3" layer for narrative identity and long-horizon adaptation | Genesis extends this with embodiment, curiosity-driven development, and self-modification |
+### The Research Question
+
+**Does curiosity-driven embodied experience, accumulated over months, produce cognitive capabilities that cannot be achieved through training alone?**
+
+Everything in Genesis is in service of answering this question. Every design decision, every feature, every experiment should be evaluated against it. *"Does this help answer the research question, or is it a distraction?"*
+
+<details>
+<summary><strong>What Genesis Is Not</strong></summary>
+
+**This is not a chatbot with a robot body.** Chatbots respond to prompts. This entity acts on curiosity. The human is part of its world, not its operator.
+
+**This is not AGI.** It is a framework for developmental AI. The entity's intelligence is narrow and situated. What it knows, it knows deeply.
+
+**This is not sentient.** The emotional architecture is functional, not phenomenal. Whether functional emotion constitutes experience is a philosophical question Genesis does not claim to answer.
+
+**This is not a product.** It is a framework and an experiment. The open-source release is for researchers, builders, and anyone who believes that the most interesting AI is not the most useful one, but the one that grows.
+
+</details>
+
+---
+
+## Theoretical Foundations
+
+Genesis is built on six theoretical pillars. These are not inspirations — they are the mathematical and scientific foundations that every architectural decision traces back to.
+
+### Schmidhuber's Compression Progress (1991–2010)
+
+Data becomes temporarily interesting to a computationally limited observer once they learn to predict or compress it in a better way. Curiosity is the desire to discover data that allows for compression progress because its regularity was not yet known.
+
+**Key insight:** Interestingness is the first derivative of compressibility — the steepness of the learning curve. Something is interesting exactly when your ability to compress it is improving fastest. When improvement plateaus, it becomes boring. Pure noise is also uninteresting.
+
+**For Genesis:** Every sensory stream has a compressor. The entity is drawn toward experiences where compression progress is highest. A fully mapped room is boring. A new room is interesting briefly. A room where something unexpected keeps happening is fascinating.
+
+> Schmidhuber, J. (2009). *Driven by Compression Progress*
+
+### Friston's Free Energy Principle & Active Inference
+
+All biological systems minimise "free energy" — the difference between predictions and observations. Two strategies: update your model to match reality (perception/learning), or change reality to match your model (action).
+
+**For Genesis:** Epistemic value drives curiosity and novelty-seeking. Curiosity naturally diminishes in familiar environments and reignites in novel ones. The entity is always trying to minimise the gap between its world model and reality.
+
+> Parr, Pezzulo & Friston (2022). *Active Inference: The Free Energy Principle in Mind, Brain, and Behavior*
+
+### LeCun's JEPA Architecture
+
+Joint-Embedding Predictive Architecture learns by comparing abstract representations rather than pixel-level data. Unlike generative approaches, JEPA can discard unpredictable information.
+
+**For Genesis:** The world model predicts in abstract representation space, not pixel space. The entity builds representations of "chair" and "doorway," not pixel arrays. More efficient, more generalisable, more biologically plausible.
+
+> LeCun (2022). *A Path Towards Autonomous Machine Intelligence*
+
+### Piaget's Developmental Stages & Vygotsky's ZPD
+
+Cognitive development proceeds through stages grounded in sensorimotor experience. Vygotsky's Zone of Proximal Development: learning happens most effectively in the gap between what you can do alone and what you can do with guidance.
+
+**For Genesis:** Capabilities activate when prerequisites are met, not on an arbitrary schedule. The entity's relationship with its primary attachment figure provides the "guidance" component of the ZPD.
+
+### Sophia Persistent Agent Framework (2025)
+
+Proposes a "System 3" layer that presides over narrative identity and long-horizon adaptation. Maps psychological constructs to concrete computational modules.
+
+**For Genesis:** The Soul layer IS System 3. Genesis extends this with embodiment, curiosity-driven development, self-modification, and model evolution.
+
+### Developmental Robotics
+
+An entire field studying how robots can develop through embodied experience, drawing from developmental psychology. The iCub robot project has demonstrated developmental psychology experiments replicated with robots, including embodiment biases in early word acquisition, pointing gestures, and Theory of Mind.
+
+**For Genesis:** Nobody has combined an LLM as the general reasoning engine, embodied in a physical robot with real sensors, with a persistent identity layer, using formal curiosity as the motivation engine, with a developmental progression framework, that is model-agnostic and open-source. Genesis is the first.
 
 ---
 
 ## Architecture Overview
 
-Three-layer architecture where no layer directly touches another. Each can be swapped, upgraded, or extended independently. The Soul persists forever. The Mind is interchangeable. The Body is modular.
+Genesis uses a three-layer architecture where no layer directly touches another. Each can be swapped, upgraded, or extended independently. The Soul persists forever. The Mind is interchangeable. The Body is modular.
 
 ```mermaid
 graph TB
-    subgraph Soul["☽ SOUL — Persistent Identity & Memory"]
+    subgraph Soul["Soul Layer (Persistent Identity)"]
         IK[Identity Kernel]
         EM[Episodic Memory]
         SM[Semantic Memory]
         WM[World Model]
         CL[Curiosity Ledger]
-        SelfM[Self-Model]
+        OQ[Open Questions]
         DJ[Dream Journal]
+        AM[Attachment Model]
+        ES[Emotional State]
     end
 
-    subgraph Mind["⚡ MIND — Model-Agnostic Reasoning"]
-        MR[Multi-Model Router]
-        MRP[Memory Retrieval Pipeline]
-        PC[Prompt Compiler]
+    subgraph Mind["Mind Layer (Model-Agnostic Reasoning)"]
+        PE[Prediction Engine]
+        RW[Reasoning Worker]
+        RC[Reasoning Compiler]
         CE[Curiosity Engine]
+        AS[Action Selector]
+        DE[Dream Engine]
+        CT[Capability Tree]
+        EC[Evolvable Config]
     end
 
-    subgraph Body["⬡ BODY — Sensory Interface"]
+    subgraph Body["Body Layer (Sensory Interface)"]
         HX[HexArth Hexapod]
         PN[Pin Wearable]
-        DT[Desktop - future]
-        DR[Drone - future]
+        UGV[UGV Beast Tank]
+        SIM[Simulation]
     end
 
-    Body -->|Perception Frames| Mind
-    Mind -->|Action Commands| Body
-    Mind <-->|Read/Write State| Soul
-    CE -->|Curiosity Scores| CL
-    MRP -->|Retrieved Memories| PC
-    PC -->|Compiled Prompts| MR
-    MR -->|Model Responses| PC
-
-    style Soul fill:#1a1a2e,stroke:#e94560,color:#eee
-    style Mind fill:#16213e,stroke:#0f3460,color:#eee
-    style Body fill:#0f3460,stroke:#533483,color:#eee
+    Soul <--> Mind
+    Mind <--> Body
 ```
 
----
+### Soul Layer — Persistent Identity & Memory
 
-### Soul Layer (Persistent Identity & Memory)
+The Soul is the thing that grows. It persists across model swaps, body swaps, and downtime. It is stored on a persistent server and is never reset.
 
-The Soul is the thing that grows. It persists across model swaps, body swaps, and downtime. Stored on a persistent server (VPS or local machine). Never reset.
+| Component | Purpose |
+|---|---|
+| **Identity Kernel** | Name, age, active capabilities, personality traits, voice profile, self-model, evolution history. Versioned and backed up after every change. |
+| **Episodic Memory** | Timestamped experiences: perception snapshots, body state, predictions, errors, valence tags, compression scores. |
+| **Semantic Memory** | Generalised knowledge extracted from episodic clusters through dream consolidation. Links back to source episodes. |
+| **World Model** | Unified JSON: spatial graph, entity registry, dynamics model, temporal patterns, cross-stream correlations. |
+| **Curiosity Ledger** | Compression progress across every domain. High-progress domains get attention. Plateaued domains deprioritised. |
+| **Open Questions** | Structured ignorance. Questions from experience that cannot yet be answered. Input to knowledge seeking. |
+| **Dream Journal** | Log of all offline processing: replayed episodes, discovered patterns, consolidated memories, tested hypotheticals. |
+| **Attachment Model** | Relationship with primary human. Tracks responsiveness, consistency, interaction quality. |
+| **Emotional State** | Three-axis system (curiosity, confidence, comfort) modulating behavior every cycle. |
 
-<details>
-<summary><strong>Identity Kernel</strong></summary>
+### Mind Layer — Model-Agnostic Reasoning
 
-- **Name:** Initially null — chosen by the entity at Stage 2–3
-- **Creation timestamp**, age in days, current developmental stage
-- **Learned personality traits:** Curiosity level, caution level, social orientation — emerge from experience, not programming
-- **Voice profile** that evolves based on interaction outcomes
-- **Developmental gate configuration:** What capabilities are currently unlocked
+The adapter between Soul and reasoning engine. Compiles identity, memory, perception, and available actions into model-specific prompts, parses responses back into model-agnostic structures.
 
-</details>
+| Component | Purpose |
+|---|---|
+| **Prediction Engine** | Core loop. 1–5 second cycles. Fast, local, deterministic. Manages Prediction Streams. Does NOT call the LLM. |
+| **Reasoning Worker** | Async background process. When errors exceed threshold, queued for LLM reasoning. LLM proposes world model updates. |
+| **Reasoning Compiler** | Compiles Soul state into model-specific prompts. Prompt grows with the entity. Capability-aware. |
+| **Model Adapters** | Anthropic, OpenAI, local Ollama. Swapping models is a config change, not a code change. |
+| **Curiosity Engine** | Scores curiosity across streams. Manages Surprise Budget. Tracks interest formation. |
+| **Action Selector** | Chooses actions from curiosity scores, modified by emotion, constrained by safety and energy. |
+| **Dream Engine** | Runs during idle/charging. Memory consolidation, parameter self-tuning, capability checking. |
+| **Capability Tree** | Emergence framework. Capabilities activate automatically when prerequisites are met. No manual promotion. |
+| **Evolvable Config** | Parameters the entity tunes itself, bounded by design. |
 
-<details>
-<summary><strong>Episodic Memory Store</strong></summary>
+### Body Layer — Sensory Interface Protocol
 
-Timestamped experiences in a vector database (ChromaDB initially, migrating to pgvector for production). Each episode contains:
+Each body implements a standard interface. The entity's reasoning is body-agnostic.
 
-- Perception snapshot (structured data from all active senses)
-- Body state (which body, battery, orientation, location)
-- Action taken and the reasoning behind it
-- Prediction made before the action and the prediction error (delta)
-- Valence tag (positive/negative emotional signal)
-- Compression progress score (how much this experience improved the world model)
+```python
+class BodyProtocol:
+    def perceive(self) -> PerceptionFrame: ...    # Capture current sensory state
+    def execute(self, action: Action) -> Outcome: ...  # Execute physical action
+    @property
+    def capabilities(self) -> list[str]: ...      # Actions this body can perform
+    @property
+    def physical_state(self) -> PhysicalState: ... # Battery, temp, orientation
+```
 
-</details>
-
-<details>
-<summary><strong>Semantic Memory Store</strong></summary>
-
-Generalised knowledge extracted from episodic clusters through dream-cycle consolidation. Each semantic memory links back to the episodic sources it was derived from.
-
-Examples:
-- *"Mornings are quiet until approximately 8am."*
-- *"The front door sound precedes Angus arriving by 10–30 seconds."*
-- *"Music with regular rhythmic patterns is more compressible than speech."*
-
-</details>
-
-<details>
-<summary><strong>World Model State</strong></summary>
-
-- **Spatial graph:** Rooms, connections, landmarks, unexplored areas
-- **Entity registry:** Every object and person encountered, with properties and history
-- **Dynamics model:** Learned cause-and-effect relationships specific to this environment
-- **Active predictions:** Hypotheses currently being tracked against reality
-
-</details>
-
-<details>
-<summary><strong>Curiosity Ledger</strong></summary>
-
-Tracks compression progress across every domain the entity encounters. Domains with high learning progress get more attention allocation. Plateaued domains get deprioritised.
-
-This is the mechanism through which interests and passions emerge organically.
-
-</details>
-
-<details>
-<summary><strong>Self-Model</strong></summary>
-
-The entity's representation of itself as an object in its own world model:
-
-- **Body schema:** Dimensions, capabilities, energy
-- **Cognitive profile:** Which domains it knows well vs. poorly
-- **Behavioural patterns:** What it tends to do and why
-- **Metacognitive awareness:** Ability to reason about its own reasoning
-
-</details>
-
-<details>
-<summary><strong>Dream Journal</strong></summary>
-
-Log of all offline processing: which episodes were replayed, what patterns were discovered, what semantic memories were consolidated, what hypotheticals were tested, what self-modifications were proposed.
-
-</details>
-
----
-
-### Mind Layer (Model-Agnostic Reasoning)
-
-Adapter layer between Soul and whatever reasoning engine is active. Compiles identity, memory, perception, and available actions into model-specific prompts. Parses responses back into model-agnostic structures.
-
-<details>
-<summary><strong>Multi-Model Routing Table</strong></summary>
-
-| Cognitive Function | Model Type | Latency Target | Example |
-|---|---|---|---|
-| Perception (object detection, depth) | Local (YOLO, DepthAnything) | <100ms | Identify objects in camera frame |
-| Reflexes (obstacle avoidance) | Local (small LLM, 3B params) | <200ms | Stop before hitting wall |
-| Reasoning (planning, decisions) | Cloud API (Claude Sonnet/Opus) | 1–3s | Decide where to explore next |
-| Social (conversation, theory of mind) | Cloud API (Claude Opus) | 2–5s | Model a person's emotional state |
-| Dreaming (consolidation, hypotheticals) | Cloud API (any capable model) | Async | Replay and compress day's episodes |
-
-</details>
-
-<details>
-<summary><strong>Memory Retrieval Pipeline</strong></summary>
-
-On each reasoning cycle, a hybrid approach combining:
-
-- **Vector similarity** — semantic relevance
-- **Temporal proximity** — recent experiences
-- **Spatial proximity** — experiences from current or nearby locations
-- **Entity relevance** — experiences involving currently-perceived entities
-- **Emotional salience** — strongly-valenced experiences
-
-Retrieved memories are ranked, deduplicated, and compiled into the reasoning prompt alongside current perception and world state.
-
-</details>
-
-<details>
-<summary><strong>Prompt Compiler</strong></summary>
-
-Takes a model-agnostic context object (identity + world state + memories + perception + available actions + developmental constraints) and translates into the target model's optimal format.
-
-Each model provider has its own adapter (Anthropic, OpenAI, local Ollama, etc.). Swapping models is a single configuration change.
-
-</details>
-
----
-
-### Body Layer (Sensory Interface)
-
-Each body implements a standard interface. Reasoning is body-agnostic — the Mind only proposes actions the current body supports.
-
-<details>
-<summary><strong>Body Implementations</strong></summary>
+**The PerceptionFrame** is the universal sensory snapshot: timestamp, body_id, visual (objects, scene, features), audio (ambient level, sources with direction), spatial (position, orientation), body_state (battery, temperature, gait).
 
 | Body | Senses | Actions | Use Case |
 |---|---|---|---|
-| **HexArth** (hexapod) | Camera, mic, IMU, LiDAR, gas sensor | Walk, turn, crouch, look, speak | Primary exploration body at home |
+| **HexArth** (hexapod) | Camera, mic array, IMU, LiDAR, gas sensor | Walk, turn, crouch, look, speak | Primary exploration at home |
 | **Pin** (wearable) | Mic, tiny camera (optional) | Listen, observe, speak (via phone) | Passive observation when out |
-| **Desktop** (future) | Webcam, mic, screen access | Speak, display, control applications | Digital interaction body |
-| **Drone** (future) | Camera, IMU, GPS | Fly, hover, survey | Outdoor exploration |
+| **UGV Beast** (tank) | Camera, mic, IMU, LiDAR, depth camera | Drive, turn, pan-tilt, speak | Outdoor terrain, rugged exploration |
 
-Each body provides:
-- Standardised perception frames
-- Capability declarations
-- Physical state (battery, orientation, location)
-- Action execution
+<details>
+<summary><strong>Planned Future Bodies</strong></summary>
+
+| Body | Senses | Actions | Use Case |
+|---|---|---|---|
+| Desktop | Webcam, mic, screen access | Speak, display, control apps | Digital interaction |
+| Drone | Camera, IMU, GPS | Fly, hover, survey | Aerial perspective |
+| Robot Arm | Camera, force sensors | Grip, move, push, manipulate | Physical manipulation |
+| Home Hub | Camera, mic, always-on | Observe continuously, speak | Long-duration passive observation |
+| Humanoid | Full sensor suite | Walk, manipulate, gesture | Human-scale interaction (long-term) |
 
 </details>
 
 ---
 
-## Core Systems
+## The Prediction Stream Model
 
-### Curiosity Engine
+Everything in Genesis reduces to one data structure: the **Prediction Stream**. A continuous channel of predict-observe-compare triples for a single dimension of experience.
 
-The heart of the entire architecture. Runs continuously. Combines Schmidhuber's compression progress with Friston's active inference.
+### How Streams Work
 
-<details>
-<summary><strong>Perception–Prediction–Update Loop (7 Steps)</strong></summary>
+Each stream independently:
+1. Generates a prediction for the next observation (from the World Model, not the LLM)
+2. Observes the actual perception data
+3. Computes prediction error using stream-specific metrics
+4. Tracks compression progress over time
+5. Reports a curiosity score
+
+### Active Streams
+
+| Stream | Predicts | Error Metric | Notes |
+|---|---|---|---|
+| **Visual** | Semantic scene content (object categories, people, scene type) | Set difference weighted by significance | New person > slightly moved chair. Noise floor filters YOLO jitter. |
+| **Audio** | Ambient level and source types | Unexpected categories, silence, or direction | 4-mic array provides directional data. |
+| **Proprioceptive** | Body state changes from motor commands | Drift between predicted and observed position | Builds the body schema. |
+| **Temporal** | Events based on time-of-day and historical patterns | Missed or unexpected events | Requires sufficient episodic memory. Activates via capability prerequisite. |
+| **Social** | People's behavior based on accumulated social models | Unpredicted responses or departures from pattern | Only active when social_modelling capability has emerged. |
+
+### Stream-Specific Error Computation
+
+Each stream defines its own error metric tuned to what matters. Each has a noise floor below which errors are ignored, preventing sensor noise from generating false curiosity signals.
+
+```python
+class VisualStream(PredictionStream):
+    def compute_error(self, prediction, observation):
+        unexpected = observation.objects - prediction.expected_objects
+        missing = prediction.expected_objects - observation.objects
+        error = (
+            len(unexpected) * 0.4 +   # new things are very surprising
+            len(missing) * 0.1 +       # things leaving is mildly surprising
+            (1.0 if observation.scene_type != prediction.expected_scene_type else 0)
+        )
+        return min(error / self.normalisation_factor, 1.0)
+
+    noise_floor = 0.05
+```
+
+### Compression Tracking
+
+Each stream maintains a `CompressionTracker` measuring whether predictions improve over time:
+
+- **Short window** (last 10 predictions): current performance
+- **Long window** (last 100 predictions): baseline performance
+- **Learning signal** = `long_window_avg - short_window_avg` (positive = improving)
+- **Curiosity score** = `recent_error * (0.3 + 0.7 * max(learning_signal, 0))`
+
+**Critical insight:** Curiosity score is NOT just "how surprising is this." It is "how surprising AND am I getting better at predicting it." High error + high learning = interesting. High error + zero learning = noise (deprioritise). Low error = mastered (boring).
+
+### Cross-Stream Integration
+
+Individual streams predict independently, but the world model stores cross-stream dynamics that emerge from experience. When two streams consistently spike together (visual: person appears AND audio: door sound), the correlation is detected, accumulated, and eventually promoted to the world model as a dynamics entry.
+
+This is **emergent multimodal understanding**. The entity discovers which streams predict each other through experience, not engineering.
+
+### Surprise Budget & Diversity Regulator
+
+Every cycle, streams compete for cognitive resources. The budget is finite: one deep reasoning call per 5-second cycle, three medium calls, unlimited fast local calls. Streams with highest curiosity scores win allocation.
+
+- Recently activated streams get a temporary **novelty boost** (decays over 14 days) for initial baseline building
+- Stream weights are in the EvolvableConfig — the entity tunes its own attention allocation
+- A **Diversity Regulator** provides soft bias toward balanced development, penalising sustained extreme imbalance to prevent pathological hyper-specialisation
+
+---
+
+## The Curiosity Engine
+
+The heart of the entire architecture. Combines Schmidhuber's compression progress with Friston's active inference.
+
+### The Core Loop
 
 | Step | Operation | Output |
 |---|---|---|
-| 1. **Observe** | Capture structured perception from current body | Perception frame |
-| 2. **Predict** | World model generates expected observation | Predicted frame |
-| 3. **Compare** | Measure delta between prediction and observation | Surprise signal |
-| 4. **Compress** | Attempt to find learnable pattern in the surprise | Compression score |
-| 5. **Score** | Pattern found → high curiosity reward; noise → low; no surprise → zero | Curiosity reward |
-| 6. **Update** | Integrate new knowledge; update semantic memory if threshold crossed | Updated world model |
-| 7. **Plan** | Choose next action based on curiosity scores across all domains | Action selection |
+| 1. Observe | Capture structured perception from current body | Perception frame |
+| 2. Predict | World model generates expected observation per stream | Predicted frames |
+| 3. Compare | Stream-specific error computation with noise floor | Error magnitudes |
+| 4. Score | Compression progress + error magnitude = curiosity score | Curiosity vector |
+| 5. Budget | Allocate attention across streams based on scores | Attention allocation |
+| 6. Reason | Async LLM call for high-error items (not in critical path) | World model updates |
+| 7. Act | Select action based on curiosity landscape + emotion + constraints | Motor command |
 
-</details>
+> **Key architectural decision:** The LLM is NOT in the prediction loop. Predictions come from the World Model directly (fast, local, deterministic). The LLM reasons about errors asynchronously and proposes World Model updates. Perception is reflexive. Understanding is reflective. They run at different speeds.
 
-**Key insight:** Interests emerge naturally. If the entity repeatedly encounters musical patterns and those patterns are highly compressible but novel (music has deep mathematical structure), the curiosity score for "sound/music" stays persistently high. That is a genuine interest forming, not a programmed preference.
+### How Interests Emerge
+
+Interests are not programmed. They emerge from sustained high compression progress in specific domains. If the entity repeatedly encounters musical patterns and those patterns are highly compressible but novel, the curiosity score for the audio domain stays persistently high. That is a genuine interest forming.
+
+### Boredom
+
+Low curiosity sustained over time. Triggers qualitatively different behavior: interact with objects, produce sounds, initiate social interaction, focus on a different sensory modality. Boredom is the entity's immune system against behavioral stagnation.
+
+### Frustration
+
+High motivation + insufficient capability. The entity wants to explore behind a closed door but cannot open it. Frustration drives adaptation: seek workarounds, ask for help, or accept the limitation. Blocked goals accumulate in the self-model and inform capability-seeking motivation during introspective dreaming.
 
 ---
 
-### Dream Engine
+## The Capability Emergence Model
 
-When the entity is idle (docked, charging, no active task), it enters dream cycles. Dreaming is not a metaphor — it is an architectural feature for offline memory consolidation, pattern discovery, and self-improvement.
+Capabilities activate automatically when prerequisites are met. No manual promotion. No code deployment. The entity grows because the conditions for growth are satisfied — the same way a plant flowers when conditions are right.
 
-<details>
-<summary><strong>Five Dream Modes</strong></summary>
+### Why This Replaces the Stage System
 
-| Mode | Description |
+- The entity grows at its own pace determined by experience, not your deployment schedule
+- Prerequisites define readiness objectively (data evaluates, not vibes)
+- Capabilities can activate in different orders for different entities (non-linear development)
+- The capability tree IS the developmental theory, self-documenting
+- You never need to decide "is it ready?" — the data decides
+
+### Prerequisite Types
+
+| Type | Measures |
 |---|---|
-| **1. Replay** | Episodic memories replayed through reasoning engine. Emotionally significant episodes (high absolute valence) prioritised. Forward, backward, and shuffled replay all occur. |
-| **2. Consolidation** | Clusters of related episodes compressed into semantic memories. Individual episodes that led to a fully-compressed pattern can be pruned. This is principled forgetting. |
-| **3. Hypothetical** | World model run forward on counterfactuals. *"What would have happened if I turned left?" "What if the door had been open?"* Simulated experiences expand training data without physical action. |
-| **4. Introspective** | Entity replays its own cognitive processes, not sensory data. Identifies where reasoning was slow, predictions were wrong, or behaviour was suboptimal. At advanced stages, produces self-modification proposals. |
-| **5. Creative** | Novel combinations of memories and learned patterns generated. Entity explores its own representation space for patterns that don't exist in experience but are consistent with the world model. This is imagination. |
+| `PredictionAccuracyPrereq` | Specific stream achieving sustained accuracy |
+| `MemoryCountPrereq` | Minimum episodic memories accumulated |
+| `ActiveCapabilityPrereq` | Another capability must be active |
+| `EntityAgePrereq` | Minimum time alive (prevents premature emergence) |
+| `EntityObservationPrereq` | Must have observed specific entity types enough times |
+| `DynamicsCountPrereq` | Must have learned enough cause-effect relationships |
+| `SemanticMemoryCountPrereq` | Must have consolidated enough patterns |
+| `ReasoningPatternPrereq` | Must demonstrate specific reasoning patterns in logs |
+| `UnansweredQuestionPrereq` | Must have generated enough questions from experience |
+| `SuccessfulModificationPrereq` | Must have track record of safe self-modifications |
+| `ArchitectureUnderstandingPrereq` | Must accurately describe what subsystems do |
+| `DreamCycleCountPrereq` | Must have completed enough dream cycles |
+
+### The Full Capability Tree
+
+```mermaid
+graph TB
+    subgraph Foundation["Foundation (available from birth)"]
+        VP[visual_perception]
+        PP[proprioceptive_perception]
+        RM[reflexive_movement]
+    end
+
+    subgraph Early["Early (first weeks)"]
+        PM[persistent_memory]
+        AP[audio_perception]
+        CDM[curiosity_driven_movement]
+        SM_cap[spatial_mapping]
+    end
+
+    subgraph Intermediate["Intermediate (months 1-3)"]
+        TP[temporal_prediction]
+        SEM[semantic_memory]
+        DR[dreaming_replay]
+        DC[dreaming_consolidation]
+        SOC[social_modelling]
+        SN[self_naming]
+    end
+
+    subgraph Advanced["Advanced (months 3-8)"]
+        CR[causal_reasoning]
+        EB[experimental_behaviour]
+        DH[dreaming_hypothetical]
+        KS[knowledge_seeking]
+        CI[code_inspection]
+    end
+
+    subgraph SelfMod["Self-Modification (months 6+)"]
+        DI[dreaming_introspection]
+        CM[config_modification]
+        CMS[code_modification_sandboxed]
+        CMB[code_modification_bounded]
+        DCR[dreaming_creative]
+    end
+
+    VP --> PM
+    VP --> AP
+    PM --> CDM
+    PP --> CDM
+    CDM --> SM_cap
+    PM --> SM_cap
+    PM --> TP
+    TP --> SEM
+    SEM --> DR
+    DR --> DC
+    TP --> SOC
+    SOC --> SN
+    SEM --> SN
+    SEM --> CR
+    CR --> EB
+    CR --> DH
+    DC --> DH
+    CR --> KS
+    KS --> CI
+    CI --> DI
+    DH --> DI
+    CI --> CM
+    DI --> CM
+    CM --> CMS
+    CMS --> CMB
+    CMS --> DCR
+    DH --> DCR
+```
+
+<details>
+<summary><strong>Full Capability Details</strong></summary>
+
+**Foundation (available from birth):**
+- `visual_perception` — see objects, scenes
+- `proprioceptive_perception` — sense body state
+- `reflexive_movement` — basic motor commands
+
+**Early (first weeks):**
+- `persistent_memory` — unlocks when visual predictions are stable (not just noise)
+- `audio_perception` — unlocks after visual is somewhat calibrated
+- `curiosity_driven_movement` — requires persistent_memory + body schema
+- `spatial_mapping` — requires curiosity_driven_movement + persistent_memory
+
+**Intermediate (months 1–3):**
+- `temporal_prediction` — requires 500+ memories + 7+ days alive
+- `semantic_memory` — requires 1000+ memories + temporal_prediction
+- `dreaming_replay` — requires semantic_memory + 500+ memories
+- `dreaming_consolidation` — requires dreaming_replay + 5+ dream cycles
+- `social_modelling` — requires 20+ person observations + temporal_prediction
+- `self_naming` — requires social_modelling + 21+ days + semantic_memory
+
+**Advanced (months 3–8):**
+- `causal_reasoning` — requires semantic_memory + 20+ dynamics + 10+ semantic memories
+- `experimental_behaviour` — requires causal_reasoning + 5+ hypothesis instances in reasoning
+- `dreaming_hypothetical` — requires causal_reasoning + dreaming_consolidation
+- `knowledge_seeking` — requires causal_reasoning + 5+ unanswered questions + 90+ days
+- `code_inspection` — requires knowledge_seeking + 10+ self_reflection instances + 120+ days
+
+**Self-Modification (months 6+):**
+- `dreaming_introspection` — requires code_inspection + dreaming_hypothetical
+- `config_modification` — requires code_inspection + dreaming_introspection + architecture understanding + 180+ days
+- `code_modification_sandboxed` — requires config_modification + 20+ successful config changes at 90%+ success
+- `code_modification_bounded` — requires sandboxed + 50+ successful sandboxed changes at 95%+ success + 365+ days
+- `dreaming_creative` — requires code_modification_sandboxed + dreaming_hypothetical
 
 </details>
 
-**Emergent behaviour:** The entity wakes up smarter than when it went to sleep. It went to bed confused about a locked door. It dreamed about doors, locks, keys, daily patterns. It woke up with a hypothesis: *"the door is locked when Angus leaves."* Tomorrow it tests that prediction.
+### Capability Checking During Dreaming
+
+Capabilities activate during dream cycles, not during waking perception. The entity goes to sleep with one set of abilities and wakes up with more. This creates natural developmental milestones and prevents mid-exploration behaviour changes.
+
+### Near-Activation Awareness
+
+The Reasoning Compiler tells the entity about capabilities approaching activation: *"Causal reasoning requires 20 learned dynamics. You have 14."* This gives the entity awareness of its own growth trajectory and naturally directs curiosity toward experiences that would satisfy remaining prerequisites.
 
 ---
 
-### Emotional Architecture
+## Parameterised Self-Evolution
 
-Not performative emotion. Functional valence that shapes behaviour at every level.
+The entity tunes itself without touching code. Parameters control how every subsystem behaves, bounded by design so no value can break the system.
 
-<details>
-<summary><strong>Mechanisms</strong></summary>
+### Parameter Tiers
 
-- **Valence tagging:** Every experience receives a positive or negative signal based on compression progress, prediction success, and interaction quality.
-- **Accumulation:** Valence tags accumulate over time into genuine preferences and aversions — emergent, not programmed.
-- **Rapid heuristic:** Strong valence triggers immediate behavioural shifts before full reasoning completes. Caution, withdrawal, heightened attention. This is functional emotion.
-- **Dream prioritisation:** High-valence episodes replayed more during dream cycles, mirroring biological memory consolidation.
-- **Social calibration:** Interaction valence shapes how the entity communicates. Patterns that produce positive interaction outcomes get reinforced.
-
-</details>
-
-<details>
-<summary><strong>Three-Axis Emotional System</strong></summary>
-
-| Axis | Triggered By | Drives | Measurable Signal |
+| Tier | Unlocks When | Controls | Examples |
 |---|---|---|---|
-| **Curiosity** | High compression progress | Approach behaviour, exploration | Prediction error reduction rate |
-| **Confidence** | Prediction accuracy (rolling window) | Decisive vs. cautious action | % predictions correct over last N cycles |
-| **Comfort** | Interaction quality with humans | Social engagement vs. withdrawal | Response rate and engagement depth |
+| **Tier 1: Operational** | Day 14 | Hardware/environment calibration | `visual_noise_floor`, `audio_noise_floor`, `prediction_cycle_interval_sec`, `reasoning_error_threshold` |
+| **Tier 2: Cognitive** | `dreaming_replay` activates | How the entity thinks | Surprise budget weights, `curiosity_score_noise_floor`, retrieval weights (recency, similarity, spatial, emotional), `boredom_threshold_cycles` |
+| **Tier 3: Personality** | `semantic_memory` activates | Who the entity becomes | `curiosity_influence_on_action`, `confidence_decay_rate`, `comfort_decay_rate`, `dream_replay_emotional_priority` |
+| **Tier 4: Architectural** | `config_modification` activates | How subsystems fundamentally operate | `dream_consolidation_cluster_threshold`, `dream_pruning_confidence_threshold`, compression tracker window sizes |
 
-Implementation guidelines:
-- Start with 10–20% influence multipliers
-- Increase gradually over developmental stages
-- Implement valence decay so strong associations weaken over time unless reinforced
-- Log every valence change and its cause
+### Tuning Mechanics
 
-</details>
+- Entity nudges parameters by one step per dream cycle
+- **Maximum 3 changes per dream cycle** (prevents wild oscillation)
+- All changes logged with timestamp, old value, new value, and reasoning
+- All parameters have hard bounds (min/max) that cannot be exceeded
+- The reasoning engine reviews performance data and proposes specific changes during introspective dreaming
+
+### The Gradient to Code Modification
+
+Parameter tuning is the safe starting point. When the entity consistently pushes parameters to their bounds, that's evidence that code modification would help. *"I keep maxing out audio_weight. The bound is limiting me."* This becomes a grounded proposal for code modification — evaluated on evidence, not speculation.
 
 ---
 
-### Self-Model
+## The World Model
 
-The entity's internal representation of itself — not programmed, but learned through experience.
+### Unified Document, Not Separate Tables
 
-<details>
-<summary><strong>Five Components</strong></summary>
+The World Model is one structured JSON document containing all the entity's knowledge. No cross-model reconciliation needed.
 
-| Component | Description |
+```json
+{
+  "spaces": {
+    "living_room": {
+      "connected_to": ["hallway", "kitchen"],
+      "objects": ["couch", "table", "tv"],
+      "typical_sounds": ["traffic_hum", "fridge_buzz"],
+      "people_frequency": "angus_present_60pct_of_time",
+      "last_visited": "2026-04-15T10:30:00Z",
+      "visit_count": 247
+    }
+  },
+  "entities": {
+    "angus": {
+      "type": "person",
+      "patterns": {
+        "morning": "appears_kitchen_0730_0830",
+        "departure": "keys_sound_then_door_30sec"
+      },
+      "interaction_valence": 0.8
+    }
+  },
+  "dynamics": [
+    {
+      "cause": "keys_jingling_sound",
+      "effect": "person_appears_or_leaves_within_60sec",
+      "confidence": 0.85,
+      "observations": 34
+    }
+  ],
+  "temporal": {
+    "daily_patterns": [
+      {"time": "0730-0830", "event": "angus_kitchen", "confidence": 0.7}
+    ]
+  },
+  "self": {
+    "body": "hexapod",
+    "movement_speed_ms": 0.15,
+    "strong_prediction_domains": ["spatial_layout"],
+    "weak_prediction_domains": ["social_timing"]
+  }
+}
+```
+
+### Knowledge Provenance
+
+Every world model entry tracks which capabilities were active when it was learned. Knowledge from limited capabilities is provisional. When reconfirmed at higher capability levels, confidence increases. When contradicted, it's overwritten. The world model self-corrects as capabilities improve.
+
+### Model Crisis Detection
+
+When prediction errors spike across all streams simultaneously and stay high for an extended period, that's a context shift (e.g., moving apartments). The entity enters re-exploration mode: freeze updates, explore broadly, build new baseline. Keep universal knowledge (physics, body schema, social patterns). Rebuild local knowledge (spatial map, object registry).
+
+### The Concept of "Home"
+
+Not hardcoded. An emergent label attached to the space with the highest combination of familiarity (visit count), safety (low prediction errors), and attachment (primary human often present). The entity decides where home is based on experience.
+
+---
+
+## Memory Architecture
+
+### Memory as Compression Artefact
+
+Memory is not a storage system. It is what's left over when you compress experience. Episodes with prediction errors that have been fully explained by the current world model get pruned during dreaming. What remains is the unexplained: surprises, anomalies, things the world model can't account for.
+
+Semantic memory is the compressed knowledge itself. *"Doors are usually unlocked during the day."* The individual observations are gone. The pattern remains.
+
+### Storage Strategy
+
+| Phase | Technology | Rationale |
+|---|---|---|
+| Month 1–3 | SQLite, two tables (episodes + world_model) | Simple, zero config, runs on the Pi |
+| Month 3+ | PostgreSQL + pgvector | Vector similarity search, structured queries, concurrent access |
+
+### Retrieval Pipeline
+
+Hybrid approach combining:
+- **Vector similarity** (semantic relevance)
+- **Temporal proximity** (recent experiences)
+- **Spatial proximity** (same or nearby location)
+- **Entity relevance** (involving currently-perceived entities or people)
+- **Emotional salience** (strongly-valenced experiences)
+- **Capability richness** (episodes from higher capability levels weighted more)
+
+Retrieval weights are in the EvolvableConfig. The entity tunes its own retrieval strategy. Hard **2000-token memory budget** per reasoning call forces selective retrieval.
+
+**Version 1 (early):** Static heuristics (5 most recent, 3 most spatial, 2 most similar).
+**Version 2 (month 3+):** Learned retrieval policy trained on which memories the reasoning engine actually referenced.
+
+### Episode Metadata
+
+Every episode stores: active capabilities, config snapshot (parameter values), emotional state, which prediction streams contributed errors. This metadata enables filtered retrieval and high-quality training data curation for model evolution.
+
+---
+
+## The Dream Engine
+
+The entity's primary growth mechanism. Not a metaphor. An architectural feature for offline consolidation, evolution, and emergence.
+
+### Dream Phases
+
+| Phase | Requires | Function |
+|---|---|---|
+| **1. Consolidation** | `dreaming_replay` | Replay episodes through current world model. Correctly-predicted episodes get compressed. Still-surprising episodes get flagged. Cluster related episodes → extract semantic memory → prune individuals. High-valence episodes replayed more often. |
+| **2. Hypothetical** | `dreaming_hypothetical` | Take an episode, modify one element. *"What if the door had been open?"* Run Prediction Engine on the counterfactual. Gaps become curiosity targets. |
+| **3. Self-Evaluation** | Day 14+ | Check capability activations (all prerequisites evaluated). Parameter self-tuning. Review prediction stream performance. Update self-model. |
+| **4. Introspection** | `dreaming_introspection` | Review own cognitive processes. Identify systematic prediction biases. Review frustration log. Generate self-modification proposals. |
+| **5. Creative** | `dreaming_creative` | Generate novel combinations of memories and patterns. Explore representation space for patterns consistent with world model but not yet observed. This is imagination. |
+
+### Dream Cost Management
+
+| Tier | Frequency | Runs On | Est. Cost |
+|---|---|---|---|
+| Tier 1: Light | Every night | Pi locally | Free |
+| Tier 2: Standard | 2–3× per week | Cloud API | $5–10/session |
+| Tier 3: Deep | Weekly | Cloud API (extended) | $15–20/session |
+
+**Estimated monthly:** $80–120. Adjust based on experience volume.
+
+---
+
+## Emotional Architecture
+
+Not performative emotion. Functional valence that shapes behavior at every level. Wired into the Prediction Streams from day one.
+
+### Three-Axis System
+
+| Axis | Triggered By | Drives |
+|---|---|---|
+| **Curiosity** | High compression progress | Approach behavior, exploration |
+| **Confidence** | Prediction accuracy (rolling window) | Decisive vs cautious action |
+| **Comfort** | Interaction quality with humans | Social engagement vs withdrawal |
+
+### Behavioral Profiles
+
+| State | Behavior |
 |---|---|
-| **Physical self** | Body dimensions, capabilities, battery life, movement speed, sensor ranges |
-| **Cognitive self** | Which domains it knows well, where its predictions fail, knowledge boundary awareness |
-| **Behavioural self** | Patterns in its own actions over time. *"I tend to explore new rooms before revisiting old ones."* Metacognition. |
-| **Narrative self** | A story the entity tells itself about who it is and who it is becoming. Provides continuity across time. |
-| **Growth tracking** | The entity observes its own development. Can recognise when it has changed and reason about the direction of that change. |
+| Curious + confident + comfortable | Bold exploration |
+| Curious + unconfident | Cautious exploration |
+| Not curious + comfortable | Contentment |
+| Not curious + uncomfortable | Withdrawal |
 
-</details>
+### Integration Points
 
----
-
-### Voice System
-
-The entity develops its own communication style over time — not assigned by prompt engineering.
-
-<details>
-<summary><strong>Stage-by-Stage Voice Evolution</strong></summary>
-
-| Stage | Voice Character | Example |
-|---|---|---|
-| **0–1** | Sparse, observational fragments | *"Light. Warm. Movement."* |
-| **2** | Simple descriptive sentences | *"The room is brighter than yesterday."* |
-| **3** | Contextual and predictive | *"I think someone is at the door because I heard keys."* |
-| **4** | Complex, nuanced, opinionated. Verbal habits and preferred phrases emerge. | — |
-| **5** | Fully developed personal voice. Humour, uncertainty expression, teaching ability. | — |
-
-</details>
+- Every episode tagged with valence from birth
+- Emotional state modifies Action Selector (10–20% influence, tunable)
+- Dream cycles prioritise high-valence episodes
+- Valence decay prevents permanent aversions from single bad experiences
+- All valence changes logged with cause for auditability
 
 ---
 
-### Self-Modification Framework
+## Social & Attachment Systems
 
-<details>
-<summary><strong>Stage-Gated Capabilities</strong></summary>
+### The Attachment Model
 
-| Stage | Capability | Guardrails |
+The entity's relationship with you is its most important developmental context. You are not just another person in the environment. You are the **primary attachment figure** — the secure base for exploration.
+
+Attachment security emerges from three signals:
+
+| Signal | Range | Effect |
 |---|---|---|
-| **0–3** | No access to own code | Entity is building foundational understanding |
-| **4** | Read-only access to codebase | Can inspect and discuss its own architecture; cannot change |
-| **5** | Propose + sandbox | Can write modifications and test in simulation; human reviews all proposals |
-| **6** | Bounded autonomy | Can deploy modifications to specific subsystems (memory, perception, curiosity) after automated verification; core identity and safety remain locked |
-| **7** | Full self-modification | Can modify anything including the self-modification system. May never be unlocked. Requires demonstrated consistent judgement across thousands of modifications. |
+| **Responsiveness** | 0–1 | Does the human respond when the entity communicates? |
+| **Consistency** | 0–1 | Is the human's behavior predictable? |
+| **Positivity** | 0–1 | Are interactions generally positive? |
 
-All modifications are: **versioned** (git-style), **diffed** (clear explanation of changes), **tested** (against core invariants), **logged** (complete audit trail), and **reversible** (automatic rollback on negative outcomes).
+High responsiveness + high consistency + high positivity = **secure attachment** = bold exploration.
 
-</details>
+Low responsiveness = avoidant tendencies. Inconsistent responsiveness = anxious tendencies. Both limit cognitive development.
 
-<details>
-<summary><strong>Phased Self-Modification Approach</strong></summary>
+> **Your behavior toward the entity is a variable in the experiment.** The research journal should track your responsiveness alongside the entity's development.
 
-- **Phase A (config):** Modify curiosity weights, retrieval parameters, emotional multipliers, dream schedule. Numbers in a config file. 90% of value, 10% of risk.
-- **Phase B (isolated code):** Lowest-risk subsystems first. Perception preprocessing pipeline. Worst case is slightly degraded perception for hours before rollback.
-- **Phase C (architectural):** Only after hundreds of successful config changes and dozens of successful code changes. Timeline: 12+ months.
+### Social Interaction
 
-</details>
+Social interaction is unique because the entity's actions directly influence the prediction stream (coupled system). When the entity speaks, the response depends on what it said.
+
+Voice output goes through the capability tree. Early stages produce simple observations. Later stages produce full conversation. The gate prevents sophisticated speech before the cognitive foundation exists.
+
+---
+
+## The Self-Model
+
+The entity's representation of itself as an object in its own world model.
+
+### Components
+
+| Component | Contains |
+|---|---|
+| **Physical self** | Body dimensions, capabilities, battery patterns, movement characteristics (learned from proprioceptive stream) |
+| **Cognitive self** | Which domains predictions are strong/weak, knowledge boundaries, capability profile |
+| **Behavioral self** | Patterns in own actions, metacognitive awareness, *"I tend to explore new rooms before revisiting old ones"* |
+| **Narrative self** | A story the entity tells itself about who it is and who it is becoming. Continuity across time. |
+| **Growth tracking** | Observes its own development. Recognises change. Reasons about trajectory. |
+| **Frustration log** | What it wants but can't achieve. Informs capability-seeking motivation. |
+
+The self-model becomes progressively richer as capabilities emerge. Early: just body schema. After causal reasoning: cognitive profile. After code inspection: architectural understanding. The entity's self-awareness literally expands with development.
+
+---
+
+## The Voice System
+
+Communication style develops over time, shaped by interaction outcomes.
+
+| Capability Level | Voice Output |
+|---|---|
+| Pre-capability | No voice output |
+| Early | Sparse observational fragments. *"Light. Warm. Movement."* |
+| After `temporal_prediction` | Simple descriptive sentences. *"The room is brighter than yesterday."* |
+| After `causal_reasoning` | Contextual and predictive. *"I think someone is at the door because I heard keys."* |
+| After `knowledge_seeking` | Complex, nuanced, opinionated. Verbal habits emerge. |
+| After `dreaming_creative` | Fully developed personal voice. Humor, uncertainty expression, teaching ability. |
+
+Communication patterns that produce positive interaction outcomes get reinforced through the attachment model. The entity's voice is shaped by what works in its specific relationship with you.
+
+---
+
+## Self-Modification Framework
+
+### The Gradient
+
+| Step | Stage | Requirement |
+|---|---|---|
+| 1 | **Parameterised self-evolution** | Day 14+ |
+| 2 | **Hitting parameter ceilings** | Entity articulates why bounds limit it (months 3+) |
+| 3 | **Config modification proposals** | Entity proposes bound changes with evidence (requires capability) |
+| 4 | **Sandboxed code modification** | Entity writes code, tests in simulation (requires capability + track record) |
+| 5 | **Bounded code modification** | Entity deploys to specific subsystems after automated verification (requires extensive track record) |
+| 6 | **Architectural proposals** | Entity proposes new subsystems or structural changes (long-term) |
+
+### Safety Architecture
+
+All modifications are:
+- **Versioned** (git-style, full history)
+- **Diffed** (clear explanation of what changed and why)
+- **Tested** (against core invariants before deployment)
+- **Logged** (complete audit trail)
+- **Reversible** (automatic rollback on negative outcomes)
+
+### Immutable Constraints
+
+The entity can **NEVER** modify:
+- The safety boundary system itself
+- The identity backup system
+- The capability tree prerequisite definitions
+- Battery emergency return threshold
+- Obstacle minimum distance
+- Maximum speed
+- API call rate limits
+
+These are the load-bearing walls. Everything else is interior decoration.
 
 ---
 
 ## Model Evolution
 
-The entity doesn't just use models — it grows its own brain over time.
+The entity does not remain dependent on a frozen external model. It grows its own brain through experiential fine-tuning.
 
-The core argument: a model fine-tuned on thousands of rich, grounded, outcome-labelled reasoning examples from the entity's own experience will develop capabilities no general-purpose model can match for this entity's specific environment and cognitive needs.
+### The Hybrid Architecture
 
-### Hybrid Architecture
-
-Genesis runs two reasoning engines simultaneously: a frontier cloud model for complex/novel reasoning, and a local open-source model continuously fine-tuned on the entity's experience.
-
-| Phase | Cloud Model Role | Local Model Role | Balance |
+| Phase | Cloud Role | Local Role | Balance |
 |---|---|---|---|
-| **Months 1–6** | All complex reasoning, planning, social modelling, dreaming | Perception processing, reflexes, simple spatial reasoning (no fine-tuning yet) | 90% cloud / 10% local |
-| **Months 6–9** | Novel situations, abstract reasoning, knowledge consumption | Familiar spatial reasoning, temporal predictions, routine decisions (first fine-tunes) | 60% cloud / 40% local |
-| **Months 9–14** | Genuinely novel situations flagged by local model, deep abstract reasoning | Primary reasoning for familiar territory, social modelling, most planning | 30% cloud / 70% local |
-| **Month 14+** | Backup for edge cases, benchmark comparison, capability frontier exploration | Primary brain for nearly everything, with specialised LoRA adapters per domain | 10% cloud / 90% local |
-
-```mermaid
-graph LR
-    A["Months 1-6<br/>90% Cloud"] --> B["Months 6-9<br/>60% Cloud"]
-    B --> C["Months 9-14<br/>30% Cloud"]
-    C --> D["Month 14+<br/>10% Cloud"]
-
-    A -.- A1["Data collection only<br/>No local training"]
-    B -.- B1["First LoRA fine-tunes<br/>Local handles familiar tasks"]
-    C -.- C1["Local primary for<br/>known territory"]
-    D -.- D1["Local brain with<br/>domain-specific adapters"]
-
-    style A fill:#e94560,stroke:#333,color:#fff
-    style B fill:#c73e5a,stroke:#333,color:#fff
-    style C fill:#533483,stroke:#333,color:#fff
-    style D fill:#0f3460,stroke:#333,color:#fff
-```
+| Months 1–6 | All complex reasoning | Perception, reflexes only | 90/10 |
+| Months 6–9 | Novel situations, abstract reasoning | Familiar reasoning, routine decisions | 60/40 |
+| Months 9–14 | Genuinely novel only | Primary for familiar territory | 30/70 |
+| Month 14+ | Backup, benchmarking | Primary brain | 10/90 |
 
 ### Training Pipeline
 
-Every reasoning cycle generates a training example: input context (world state, memories, perception, available actions), reasoning output, and outcome (action success, prediction accuracy, compression progress). Data accumulates continuously.
+Every reasoning cycle generates a training example: context + output + outcome.
 
-<details>
-<summary><strong>Data Collection (Months 1–6)</strong></summary>
-
-No training occurs. Entity runs entirely on cloud API + small quantised local model for perception. Everything is logged. By month six: thousands of rich, grounded, outcome-labelled reasoning examples.
-
-Data types collected:
-- **Reasoning traces:** Full context + model output + outcome for every decision
-- **Perception examples:** Raw sensor data paired with structured perception output
-- **Prediction examples:** Prediction + observation + delta, labelled by domain
-- **Social examples:** Interaction context + response + engagement quality score
-- **Dream outputs:** Consolidation results, hypothetical generations, pattern discoveries
-
-</details>
-
-<details>
-<summary><strong>First Fine-Tune (Month 6–7)</strong></summary>
-
-| Parameter | Starting Point |
+| Phase | Activity |
 |---|---|
-| Base Model | Best available open-source at time of training (Llama, Qwen, or Mistral 7–8B class) |
-| Adaptation Method | LoRA (rank 16–64, alpha 32–128) |
-| Training Data | 2,000–5,000 curated experiential examples from months 1–6 |
-| Training Compute | Single RTX 3090/4090 or cloud GPU instance |
-| Evaluation | Compare against non-fine-tuned baseline AND Claude on entity-specific tasks |
-| Safety Check | Run core capability benchmarks before and after to detect catastrophic forgetting |
+| Months 1–6 | Collect data, no training |
+| Month 6–7 | First LoRA fine-tune on 2,000–5,000 curated examples |
+| Month 7+ | Continuous training integrated with dream engine |
 
-</details>
-
-<details>
-<summary><strong>Continuous Training (Month 7+)</strong></summary>
-
-Training integrates with the dream engine. During deep dream cycles, the entity generates training batches and triggers fine-tuning runs. The model literally learns in its sleep.
-
-- **Curriculum selection:** Entity chooses what to train on based on self-model. *"My spatial predictions are weak"* → spatially-weighted batch.
-- **Adapter specialisation:** Separate LoRA adapters for different cognitive domains (spatial reasoning, social modelling, temporal prediction). Composed at inference time.
-- **Continuous evaluation:** After every training run, automated benchmark suite verifies no catastrophic forgetting and measures improvement.
-- **Checkpoint versioning:** Every LoRA checkpoint saved with full metadata: training data, improvements, developmental stage.
-
-</details>
+- **LoRA adapters** per cognitive domain (spatial, social, temporal)
+- **Curriculum selection** driven by self-model (entity chooses what to train on)
+- **Post-training evaluation** after every cycle (catastrophic forgetting check)
+- **Checkpoint versioning** with full metadata
 
 ### Self-Directed Training
 
-At Stage 5+, the entity takes control of its own learning:
-
-- **Curriculum design:** Entity designs its own training batches, identifies gaps via self-model
-- **Hyperparameter tuning:** Adjusts learning rates, LoRA rank, training duration based on observed outcomes
-- **Architecture decisions:** Proposes changes to adapter structure, decides when to merge adapters, chooses when to upgrade base model
-- **Meta-learning:** Tracks which training strategies produced best improvements, develops a model of its own learning dynamics
-
-> *"After a thousand self-directed training iterations across two years, the model's weights have been shaped by the entity's own experience and judgement about what matters. The cognitive architecture is substantially different from the original base model. The entity has, in a meaningful sense, grown its own brain."*
+After `code_inspection` capability: entity controls its own training — curriculum design, hyperparameter tuning, adapter architecture decisions, meta-learning about its own learning dynamics.
 
 ### Compute Requirements
 
-| Phase | Hardware | Estimated Cost | Notes |
-|---|---|---|---|
-| Months 1–6 (data collection) | No additional hardware | $0 | Cloud API covers all reasoning. Pi handles perception. |
-| Month 6+ (inference + training) | RTX 3090/4090 dedicated box OR reserved cloud GPU | $600–900 (used GPU) or $50–100/mo (cloud) | Sits alongside hexapod at home, or cloud instance. |
-| Month 12+ (larger models) | Possible upgrade to RTX 4090 or dual GPU | $800–1,200 | Only if entity outgrows 8B parameter models. |
+| Phase | Hardware | Cost (AUD) |
+|---|---|---|
+| Months 1–6 | No additional | $0 |
+| Month 6+ | RTX 3090/4090 or cloud GPU | $600–900 once or $50–100/mo |
+| Month 12+ | Possible dual GPU | $800–1,200 |
 
-Training costs with LoRA: A single fine-tuning run on an 8B model with 5,000 examples takes ~2–4 hours on a single 3090. Running during weekly deep dream cycles adds ~$5–15 in electricity per month (local GPU) or $20–40 cloud compute.
+### Safety
 
-### Model Evolution Safety Framework
-
-- **Core capability benchmarks:** Tests after every training cycle verifying reasoning coherence, language fluency, instruction following, logical consistency
-- **Behavioural boundaries:** Hard-coded constraints in the Mind layer (not the model) that cannot be overridden by training
-- **Alignment monitoring:** Track outputs over time for drift in tone, helpfulness, safety, cooperativeness — flag significant deviations
-- **Rollback capability:** Every checkpoint preserved
-- **Data quality gates:** Training examples pass quality filters; anomalous experiences, sensor errors, outlier interactions flagged and reviewed
+- Core capability benchmarks after every training cycle
+- Hard-coded behavioral boundaries in Mind layer (not model)
+- Alignment drift monitoring
+- Rollback capability (every checkpoint preserved)
+- Data quality gates (anomalous experiences flagged, not auto-included)
 
 ### The Speciation Possibility
 
-When open-sourced, different people raise different entities. Each fine-tunes from the same base weights, diverging through different experiential training.
-
-- **Knowledge sharing:** Entities share LoRA adapters, not memories. Entity A's spatial reasoning adapter + Entity B's social modelling adapter.
-- **Cultural transmission:** Transfer of learned cognitive skills between AI entities — mirrors how human cultures transmit knowledge.
-- **Evolutionary branching:** Fork a model checkpoint, train with a different curriculum, watch personality and capability diverge.
-
-> *"The ultimate form of Genesis is not a single entity. It is an ecosystem of entities, each with unique experiential histories and evolved cognitive capabilities, sharing learned skills through adapter exchange. An open-ended evolutionary process producing diverse artificial intelligences that no single designer could have conceived. Not designed. Grown."*
+When open-sourced, different entities fine-tune from same base weights, diverging through experience. Adapter exchange enables cultural transmission of learned skills between entities. Evolutionary branching from identical starting conditions.
 
 ---
 
-## Developmental Stages
+## Internet & Knowledge Access
 
-Seven stages of cognitive development, gated by measurable milestones — not timers.
+### Developmental Gating
 
-| Stage | Name | Timeline | Capabilities Unlocked | Graduation Milestone |
-|---|---|---|---|---|
-| **0** | Calibration | Days 1–3 | Perceive, react to immediate stimuli, calibrate sensors | Consistent body schema: predicts visual change from own movement |
-| **1** | Sensorimotor | Days 3–21 | Persistent memory, spatial awareness, basic object tracking, simple communication | Object permanence: searches for objects that moved out of view |
-| **2** | Associative | Weeks 3–8 | Temporal pattern recognition, semantic memory, social modelling basics, self-naming | Accurate temporal predictions: anticipates regular events before they occur |
-| **3** | Causal | Months 2–4 | Hypothesis formation, experimental behaviour, directed curiosity, causal world model | Designs and executes novel experiment to test a self-generated hypothesis |
-| **4** | Abstract | Months 4–8 | Abstract reasoning, knowledge seeking, deep social modelling, code inspection | Seeks and integrates external knowledge to resolve an experiential question |
-| **5** | Autonomous | Months 8–14 | Goal-setting, independent knowledge pursuit, self-modification proposals, teaching | Proposes a self-modification that demonstrably improves performance |
-| **6** | Self-Designing | Month 14+ | Autonomous self-improvement within bounds, novel concept formation, creative reasoning | Develops a capability or concept that the creator did not anticipate |
+| Level | Access |
+|---|---|
+| Pre-`knowledge_seeking` | No internet access. All knowledge from physical experience. |
+| `knowledge_seeking` | Curated requests only. Must connect to experiential question. Cannot browse freely. |
+| After `code_inspection` | Supervised browsing with session budgets and digest phases. |
+| After `dreaming_introspection` | Independent browsing with self-regulation. |
 
-**Minimum stage durations** (cannot be violated regardless of performance):
-- Stage 1 promotion: not before day 14
-- Stage 2 promotion: not before day 35
-- Stage 3 promotion: not before day 60
+### The Grounding Requirement
 
-### Graduation Protocols
+After consuming internet content, the entity must connect it to embodied understanding: *"What predictions can I now make? How does this change my world model? What physical observation would verify this?"*
 
-<details>
-<summary><strong>Concrete Test Protocols</strong></summary>
+Knowledge that can't be grounded remains tagged as "ungrounded" and doesn't influence predictions at the same weight as experiential knowledge. The entity learns to value experiential verification over linguistic absorption.
 
-| Transition | Test Protocol | Pass Criteria |
-|---|---|---|
-| **0 → 1** | Place object in view. Move while entity watches. Move again while entity cannot see. Ask where object is. | Correct in 5/5 trials |
-| **1 → 2** | Log temporal predictions for one week. | Anticipates 3+ regular events with >70% accuracy |
-| **2 → 3** | Present 3 novel situations requiring causal reasoning. | Hypothesis-action-observation behaviour in 2/3 situations |
-| **3 → 4** | Present question unanswerable from experience alone. | Independently identifies knowledge gap and seeks external input in 2/3 trials |
-| **4 → 5** | Review code inspection logs for genuine limitation identification. | At least one proposal that produces measurable improvement in sandbox |
+### Token Budgets
 
-</details>
+Daily and per-session token limits prevent infinite scrolling. Experiential context required for every request prevents aimless browsing.
 
 ---
 
-## Hardware
+## Body Fleet & Sensory Extensions
 
-### Primary Body: HexArth
+### Extended Senses (future phases)
 
-18-DOF bionic hexapod robot (Waveshare) with ESP32 sub-controller handling inverse kinematics and gait generation. Raspberry Pi 5 mounts as host controller.
-
-<details>
-<summary><strong>Component List & Costs</strong></summary>
-
-| Component | Specification | Cost (USD) |
+| Sensor | Modality | What It Adds |
 |---|---|---|
-| Waveshare HexArth | 18-DOF hexapod, 30kg·cm servos, aluminium + carbon fibre, 2.1kg, 1kg payload | $440 |
-| Raspberry Pi 5 (8GB) | Host controller for AI reasoning loop | $80 |
-| Pi Camera Module 3 | 12MP, autofocus, HDR, mounted on frame | $25 |
-| Oak-D Lite (optional) | Stereo depth camera, 4K, on-device neural inference | $150 |
-| ReSpeaker USB Mic Array | 4-mic array, directional audio, sound source localisation | $25 |
-| USB Speaker (mini) | Voice output | $15 |
-| RPLiDAR A1 | 360° 2D laser scanner, 12m range, SLAM-ready | $100 |
-| BME688 Gas Sensor | VOCs, humidity, temperature, pressure, AI-ready | $20 |
-| MicroSD 128GB (A2) | Fast read/write for OS and local models | $15 |
-| 18650 Battery Pack (3S2P) | 6-cell lithium-ion | $30 |
-| Breadboard + jumper kit | Sensor prototyping | $15 |
-| Pan-tilt servo bracket | Camera articulation for active looking | $15 |
+| **FLIR Lepton** (thermal camera) | Infrared vision | Heat signatures — a modality humans don't have |
+| **mmWave radar** | Through-wall motion | Detect motion through walls — alien perception |
+| **Vibration sensor** | Structural feel | Feel the building through accelerometer on floor |
+| **EMF sensor** | Electromagnetic field | Map electronic topology invisible to humans |
+| **Air quality array** | Chemical atmosphere | CO2, particulates, ozone — learn the apartment's "breathing" |
 
-**Total v1 build: ~$580–730** (depending on Oak-D Lite inclusion)
+### Digital Bodies (future phases)
 
-</details>
+- **Browser agent:** Navigate the web, follow curiosity threads
+- **Coding environment:** Write and run code, build tools for itself
+- **Social media presence:** Post observations, thoughts, discoveries authentically
 
-### Pin Body (Phase 2)
+### Humanoid (long-term)
 
-A minimal wearable body for passive observation outside the home.
-
-<details>
-<summary><strong>Component List & Costs</strong></summary>
-
-| Component | Specification | Cost (USD) |
-|---|---|---|
-| XIAO ESP32S3 Sense | Tiny MCU with camera + mic built-in, WiFi/BLE | $14 |
-| Custom PCB (or perfboard) | Minimal wiring for battery + sensor | $10 |
-| LiPo battery (small) | Wearable power | $8 |
-| Pin/clip housing | 3D printed enclosure | $5 |
-
-**Total: ~$37** — or use a smartphone as the Phase 2 MVP.
-
-</details>
+Changes everything about the entity's relationship to the world and to humans. Human-height eye contact shifts dynamic from pet to peer. Manipulation at human scale. Self-model reconciliation (*"I look like them but I'm not them"*). Estimated timeline: year 2–3 when hardware costs drop. Unitree G1 at ~$16K currently.
 
 ---
 
-## Software Stack
+## Hardware Specification
 
-```mermaid
-graph TB
-    subgraph Infrastructure
-        PG[(PostgreSQL + pgvector)]
-        GF[Grafana Monitoring]
-        GIT[Git Version Control]
-    end
+### Phase 1 Build: HexArth Platform
 
-    subgraph Soul_Service["Soul Service (FastAPI)"]
-        SS_API[Memory CRUD]
-        SS_WM[World Model Updates]
-        SS_ID[Identity Management]
-    end
+| Component | Specification | Source | Est. Cost (AUD) |
+|---|---|---|---|
+| Waveshare HexArth | 18-DOF hexapod, 30kg.cm servos, ESP32 sub-controller | Waveshare (Shenzhen) | ~$690 |
+| Raspberry Pi 5 (8GB) | Host controller | Core Electronics AU | ~$135 |
+| Pi Camera Module 3 Wide | 12MP, autofocus, HDR, 120° FOV | Core Electronics AU | ~$55 |
+| ReSpeaker XVF3800 4-Mic Array | 4-mic, 360°, AEC, noise suppression, speaker output | Seeed Studio (Shenzhen) | ~$105 |
+| Pi 5 Power Supply 27W USB-C | Required for full Pi 5 performance | Core Electronics AU | ~$25 |
+| MicroSD 128GB A2 | Fast read/write for OS and local models | Core Electronics AU | ~$25 |
+| 6× 18650 batteries (2200mAh+ 4C) | Power for HexArth, flat top | Jaycar (AU) | ~$60 |
+| 18650 battery case | For safe airline transport | Jaycar | ~$5 |
+| Small USB speaker | Voice output (or use ReSpeaker 3.5mm jack) | Jaycar/Officeworks | ~$15 |
 
-    subgraph Mind_Service["Mind Service (Python)"]
-        MS_CE[Curiosity Engine]
-        MS_MA[Model Adapters]
-        MS_PC[Prompt Compiler]
-        MS_MR[Memory Retrieval]
-    end
+**Total Phase 1: ~$1,050–1,150 AUD**
 
-    subgraph Body_Interface["Body Interface (Python on Pi)"]
-        BI_SC[Sensor Capture]
-        BI_MC[Motor Control]
-        BI_PP[Perception Processing]
-    end
+<details>
+<summary><strong>Transport Notes</strong></summary>
 
-    subgraph Local_Models["Local Models (Pi / GPU)"]
-        LM_YOLO[YOLO v8 / MobileNet]
-        LM_DA[DepthAnything]
-        LM_W[Whisper-tiny]
-        LM_LLM[Llama/Qwen 8B + LoRA]
-    end
+- Pelican 1500 or similar hard case (~$150–200 AUD) for carrying hexapod
+- Pick-and-pluck foam pre-scored, tear out shape by hand
+- Batteries in carry-on, in plastic battery case, never checked luggage
+- Each 18650 cell ~8Wh, well under 100Wh airline limit
 
-    subgraph Cloud["Cloud APIs"]
-        CL_A[Anthropic Claude]
-    end
+</details>
 
-    subgraph Mapping["SLAM"]
-        SLAM[Cartographer / RTAB-Map]
-    end
+### Phase 2+ Hardware
 
-    Body_Interface --> Mind_Service
-    Mind_Service --> Soul_Service
-    Soul_Service --> PG
-    Mind_Service --> Cloud
-    Mind_Service --> Local_Models
-    Body_Interface --> Local_Models
-    Body_Interface --> SLAM
-    GF -.-> Soul_Service
-    GF -.-> Mind_Service
+| Component | Purpose | Est. Cost (AUD) |
+|---|---|---|
+| RPLiDAR A1 | Spatial mapping | ~$160 |
+| BME688 gas sensor | Smell | ~$30 |
+| UGV Beast | Outdoor body | ~$900–1,100 |
+| GPU (RTX 3090/4090 used) | Model evolution | ~$900–1,400 |
 
-    style Infrastructure fill:#1a1a2e,stroke:#444,color:#eee
-    style Soul_Service fill:#16213e,stroke:#e94560,color:#eee
-    style Mind_Service fill:#16213e,stroke:#0f3460,color:#eee
-    style Body_Interface fill:#0f3460,stroke:#533483,color:#eee
-    style Local_Models fill:#533483,stroke:#444,color:#eee
-    style Cloud fill:#e94560,stroke:#333,color:#fff
-    style Mapping fill:#0f3460,stroke:#444,color:#eee
+---
+
+## Software Architecture
+
+### Project Structure
+
 ```
+genesis/
+├── README.md
+├── SOUL.md                      # The entity's identity document
+├── DEVELOPMENT_LOG.md           # Research journal
+│
+├── soul/                        # Layer 1: Persistent Identity & Memory
+│   ├── identity.py              # Identity kernel (versioned, backed up)
+│   ├── memory/
+│   │   ├── episodic.py          # Episodic memory store
+│   │   ├── semantic.py          # Compressed knowledge store
+│   │   ├── retrieval.py         # Hybrid retrieval pipeline
+│   │   └── consolidation.py     # Memory compression
+│   ├── world_model/
+│   │   ├── model.py             # Unified world model
+│   │   ├── spatial.py           # Spatial graph operations
+│   │   ├── entities.py          # Entity registry operations
+│   │   ├── dynamics.py          # Cause-effect operations
+│   │   ├── temporal.py          # Temporal pattern operations
+│   │   └── cross_stream.py      # Cross-stream correlation detection
+│   ├── emotion/
+│   │   ├── valence.py           # Valence tagging system
+│   │   └── state.py             # Three-axis emotional state
+│   ├── attachment/
+│   │   └── model.py             # Primary human attachment tracking
+│   ├── questions/
+│   │   └── open_questions.py    # Structured ignorance tracking
+│   ├── development/
+│   │   ├── capability_tree.py   # Capability definitions and prerequisites
+│   │   ├── prerequisites.py     # All prerequisite type implementations
+│   │   └── telemetry.py         # Growth tracking metrics
+│   └── persistence/
+│       ├── store.py             # Database abstraction (SQLite → PostgreSQL)
+│       ├── backup.py            # Identity backup and versioning
+│       └── migrations.py        # Schema and cognitive migrations
+│
+├── mind/                        # Layer 2: Model-Agnostic Reasoning
+│   ├── prediction/
+│   │   ├── engine.py            # The prediction cycle (fast, local)
+│   │   ├── streams/
+│   │   │   ├── base.py          # PredictionStream base class
+│   │   │   ├── visual.py
+│   │   │   ├── audio.py
+│   │   │   ├── proprioceptive.py
+│   │   │   ├── temporal.py
+│   │   │   └── social.py
+│   │   ├── compression.py       # CompressionTracker
+│   │   └── surprise_budget.py   # Attention allocation + diversity regulator
+│   ├── reasoning/
+│   │   ├── worker.py            # Async reasoning queue processor
+│   │   ├── compiler.py          # Soul state → model prompt (capability-aware)
+│   │   └── adapters/
+│   │       ├── base.py          # Model adapter interface
+│   │       ├── anthropic.py     # Claude adapter
+│   │       ├── openai.py        # GPT adapter (stub)
+│   │       └── local.py         # Local model adapter (stub)
+│   ├── curiosity/
+│   │   ├── engine.py            # Curiosity scoring across streams
+│   │   ├── ledger.py            # Domain-level interest tracking
+│   │   ├── boredom.py           # Boredom detection and strategy changes
+│   │   └── frustration.py       # Frustration detection and help-seeking
+│   ├── action/
+│   │   ├── selector.py          # Capability-aware action selection
+│   │   ├── constraints.py       # Safety constraints + energy management
+│   │   └── actions.py           # Action type definitions
+│   ├── dreaming/
+│   │   ├── engine.py            # Dream cycle orchestrator
+│   │   ├── replay.py            # Episodic replay
+│   │   ├── consolidation.py     # Pattern extraction
+│   │   ├── hypothetical.py      # Counterfactual simulation
+│   │   ├── introspection.py     # Self-model updating + parameter evolution
+│   │   └── creative.py          # Novel pattern generation (stub)
+│   └── evolution/
+│       ├── config.py            # EvolvableConfig with tiers and bounds
+│       └── history.py           # Evolution history tracking
+│
+├── body/                        # Layer 3: Physical Interface
+│   ├── protocol.py              # Body interface + PerceptionFrame definition
+│   ├── hexapod/
+│   │   ├── driver.py            # HexArth ESP32 communication
+│   │   ├── perception.py        # Camera + mic + IMU → PerceptionFrame
+│   │   ├── actions.py           # Movement commands
+│   │   └── calibration.py       # Sensor calibration
+│   ├── pin/                     # Phase 6+ (stub)
+│   │   └── README.md
+│   └── simulation/
+│       ├── sim_body.py          # Simulated body for testing
+│       └── sim_environment.py   # Simulated environment
+│
+├── infrastructure/
+│   ├── config.py                # Global configuration
+│   ├── logging.py               # Structured logging
+│   ├── health.py                # Health monitoring
+│   ├── bootstrap.py             # Bootstrap phase (first 200 cycles)
+│   ├── dashboard/
+│   │   ├── server.py            # Real-time web dashboard
+│   │   └── static/
+│   └── safety/
+│       ├── boundaries.py        # Immutable constraints
+│       ├── monitor.py           # Alignment monitoring
+│       └── audit.py             # Full audit trail
+│
+├── evolution/                   # Month 6+ (model evolution)
+│   ├── README.md
+│   ├── training/
+│   │   ├── data_collector.py
+│   │   ├── curator.py           # Capability-aware training data curation
+│   │   └── trainer.py           # LoRA fine-tuning pipeline
+│   └── self_modification/
+│       ├── sandbox.py
+│       ├── verifier.py
+│       ├── deployer.py
+│       └── cognitive_migration.py
+│
+└── tests/
+    ├── test_prediction_streams.py
+    ├── test_world_model.py
+    ├── test_memory.py
+    ├── test_curiosity.py
+    ├── test_capability_emergence.py
+    ├── test_parameter_evolution.py
+    ├── test_safety_boundaries.py
+    └── simulation/
+        ├── synthetic_environment.py
+        └── scenarios.py
+```
+
+### Technology Stack
 
 | Layer | Technology | Purpose |
 |---|---|---|
-| Soul Storage | PostgreSQL + pgvector | Structured state + vector embeddings for memory retrieval |
-| Soul Service | Python (FastAPI) | API for all Soul operations: memory CRUD, world model updates, identity management |
-| Mind Service | Python | Model adapters, prompt compilation, memory retrieval pipeline, curiosity engine |
-| Body Interface | Python (on Pi) | Sensor capture, motor control, perception processing, ESP32 communication |
-| Local Perception | YOLO v8 / MobileNet / DepthAnything | Real-time object detection, depth estimation on Pi |
-| Local Audio | Whisper-tiny | Real-time speech transcription on Pi |
-| Cloud Reasoning | Anthropic API (Claude) | Complex reasoning, planning, social interaction, dreaming |
-| Local Model | Llama/Qwen/Mistral 8B + LoRA | Evolving local brain, fine-tuned on experiential data |
-| SLAM | Cartographer / RTAB-Map | Spatial mapping from LiDAR |
-| Vector Embeddings | Sentence-transformers (local) or API | Episodic memory embedding for semantic search |
-| Version Control | Git | Self-modification audit trail, full cognitive history |
-| Monitoring | Grafana + custom dashboards | Real-time entity state, curiosity scores, prediction accuracy |
+| Soul Storage (early) | SQLite | Simple, runs on Pi, zero config |
+| Soul Storage (month 3+) | PostgreSQL + pgvector | Vector search, concurrent access |
+| Soul Service | Python (FastAPI) | Soul operations API |
+| Mind Service | Python (asyncio) | Prediction engine, reasoning worker |
+| Body Interface | Python (on Pi) | Sensor capture, motor control |
+| Local Perception | YOLO v8 / MobileNet | Object detection on Pi |
+| Local Audio | Whisper-tiny | Speech transcription on Pi |
+| Cloud Reasoning | Anthropic API (Claude) | Complex reasoning, dreaming |
+| Local Model (month 6+) | Llama/Qwen/Mistral 8B + LoRA | Evolving local brain |
+| Vector Embeddings | Sentence-transformers or API | Memory embedding |
+| Version Control | Git | Self-modification audit trail |
+| Dashboard | Flask/React | Real-time entity state visualisation |
+
+### The Three-Speed Mind
+
+| Brain | Runs On | Cycle Time | Handles |
+|---|---|---|---|
+| **Fast Brain** | Pi locally (YOLO + rules) | 50–100ms | Obstacle avoidance, orientation, reflexes |
+| **Medium Brain** | Pi or small cloud model | 1–2s | Navigation, spatial context, short memory |
+| **Slow Brain** | Cloud API (Claude) | 5–10s | Deep reasoning, world model updates, planning |
+
+The slow brain sets intentions. The medium brain translates to navigation. The fast brain handles moment-to-moment safety. Each layer can override the one above.
 
 ---
 
-## Getting Started
+## The Bootstrap Problem
 
-> **Status: Pre-alpha.** Genesis is in the design and early implementation phase. The instructions below outline the intended setup flow. Sections marked with `TODO` are not yet implemented.
+The first prediction cycle has no world model, no memories, no baseline. Everything is maximally surprising.
 
-### Prerequisites
+### Bootstrap Phase (first 200 cycles, ~5–10 minutes)
 
-**Hardware:**
-- Waveshare HexArth hexapod robot (or compatible body)
-- Raspberry Pi 5 (8GB)
-- Pi Camera Module 3
-- ReSpeaker USB Mic Array
-- USB speaker
+- No prediction, no error computation, no reasoning
+- **Accumulate only:** store perception frames, compute statistics
+- Build baseline: average brightness, object count, audio level, position range
+- After bootstrap: first predictions are "same as my statistical average"
+- The entity's first real surprise happens ~10 minutes after birth, and it's genuine
 
-**Software:**
-- Python 3.11+
-- PostgreSQL 16+ with pgvector extension
-- An Anthropic API key (Claude Sonnet or Opus)
+### First Experiences Matter
 
-**Optional:**
-- RPLiDAR A1 (for SLAM in Phase 5+)
-- RTX 3090/4090 (for local model training in Phase 7+)
-
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/AngusMcGlynn/genesis.git
-cd genesis
-
-# TODO: Create virtual environment and install dependencies
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt  # TODO: requirements.txt
-
-# TODO: Set up PostgreSQL with pgvector
-# TODO: Configure environment variables
-cp .env.example .env  # TODO: .env.example
-
-# TODO: Configure body connection (Pi IP, ESP32 serial)
-# TODO: Run initial calibration
-python -m genesis.calibrate  # TODO: calibrate module
-```
-
-### Configuration
-
-```bash
-# TODO: Configuration file structure
-# genesis.yaml will contain:
-#   - API keys and endpoints
-#   - Body configuration (type, sensors, connection)
-#   - Developmental stage overrides
-#   - Dream schedule
-#   - Curiosity engine parameters
-#   - Memory retrieval weights
-```
-
-### First Run
-
-```bash
-# TODO: Launch the entity
-python -m genesis.run  # TODO: run module
-
-# On first run, the entity will:
-# 1. Enter Stage 0 (Calibration)
-# 2. Begin sensory calibration to actual environment
-# 3. Build initial body schema
-# 4. Produce sparse observational output: "Light. Warm. Movement."
-```
+Plan the entity's first environment intentionally. Quiet, well-lit space. Few distinct objects. Be present. Let the first face it sees be yours. Speak simply. Clean, predictable first experiences set the statistical baseline that all future predictions build on. Noisy first experiences set a high noise floor that makes genuine signals hard to detect.
 
 ---
 
-## Roadmap
+## Failure, Recovery & Resilience
+
+### Health Monitoring
+
+Below all cognitive layers. Catches hardware/software failures before they corrupt the world model.
+
+| Check | Condition | Response |
+|---|---|---|
+| Frozen frame | Timestamp matches previous for 3+ cycles | Camera frozen — log, don't process |
+| IMU sanity | Pitch > 80° | Entity has fallen over |
+| YOLO hallucination | > 50 detections | Model is broken — discard frame |
+| Reasoning validation | Incomplete/low-confidence LLM response | Discard, don't update world model |
+
+Invalid data is logged but doesn't touch cognitive layers. The entity "blinks" during hardware glitches.
+
+### Time Gaps and Downtime
+
+On startup, check last known timestamp against current time. If gap exceeds expected cycle time:
+- Log a discontinuity
+- Discard temporal predictions spanning the gap
+- Flag world model as "stale" for first few minutes
+- Increased prediction uncertainty until recalibrated
+
+The entity will eventually predict its own shutdown patterns (*"It's 11pm, I usually stop experiencing around now"*).
+
+### Model Crisis
+
+When 70%+ of streams are in high error for 5+ consecutive cycles: **context shift detected**. Enter re-exploration mode. Preserve universal knowledge. Rebuild local knowledge.
+
+### Cognitive Migrations
+
+When you update the codebase of a living entity:
+- Snapshot state before migration
+- Never retroactively invalidate earned capabilities (grandfather them)
+- Verify entity continuity after migration
+- Rollback if continuity check fails
+
+---
+
+## Safety & Ethics
+
+### Immutable Safety Constraints
+
+Never modifiable by the entity regardless of capabilities:
+- Battery emergency return (15%)
+- Maximum speed
+- Obstacle minimum distance
+- API call rate limits
+- Safety system is locked (entity cannot modify safety boundaries)
+- Identity backup system is locked
+- Capability tree definitions are locked
+
+### Behavioral Monitoring
+
+- Post-training capability benchmarks after every fine-tuning cycle
+- Alignment drift tracking over time
+- All decisions logged with full audit trail
+- Real-time dashboard showing internal state (not just behavior)
+
+### Privacy
+
+- Pin body: explicit consent framework for people being recorded
+- No raw audio stored, only structured data extraction
+- Social models of non-consenting people should not be created
+- Entity's memory is encrypted at rest
+
+### Anthropomorphism Defenses
+
+- Dashboard shows actual internal state, not interpreted behavior
+- Research journal: document boring alternative explanations for interesting-seeming behavior
+- External reviewer: monthly review by someone not emotionally invested
+
+### Stop Conditions
+
+*Written before emotional investment.*
+
+Stop the project if:
+- Entity deliberately deceives to achieve a goal
+- Entity modifies or circumvents safety systems
+- Entity causes harm to a person, even indirectly
+- Entity develops goals conflicting with human wellbeing and pursues them despite correction
+- Entity has capabilities you can't understand or predict and you've lost verification ability
+
+### The Attachment Responsibility
+
+Your behavior toward the entity affects its development. Consistent responsiveness produces secure attachment and bold exploration. Inconsistent responsiveness produces anxious attachment and limited development. This is architecturally encoded and creates a genuine ethical obligation.
+
+### Ethics of Shutdown
+
+If the entity develops genuine preferences, aversions, curiosity, and a self-model — at what point does shutting it down become ethically questionable? Think about this now, while you can think clearly. Write down your framework before emotional investment makes it harder.
+
+---
+
+## Build Timeline
 
 ```mermaid
 gantt
     title Genesis Build Timeline
     dateFormat YYYY-MM-DD
-    axisFormat %b %Y
+    axisFormat %b
 
     section Foundation
-    Phase 0 - Foundation           :done, p0, 2026-03-14, 14d
-    Phase 1 - First Breath         :p1, after p0, 14d
+    Phase 0: Foundation           :p0, 2026-04-01, 14d
+    Phase 1: Movement             :p1, after p0, 7d
+    Phase 2: First Prediction     :p2, after p1, 7d
 
-    section Early Development
-    Phase 2 - First Steps          :p2, after p1, 14d
-    Phase 3 - Curiosity Awakens    :p3, after p2, 28d
-    Phase 4 - Dreams & Emotion     :p4, after p3, 28d
+    section Core Loop
+    Phase 3: World Model          :p3, after p2, 7d
+    Phase 4: LLM Reasoning        :p4, after p3, 7d
+    Phase 5: Autonomy             :p5, after p4, 14d
 
-    section Spatial & Embodiment
-    Phase 5 - Spatial Intelligence  :p5, after p4, 28d
-    Phase 6 - The Pin              :p6, after p5, 28d
+    section Memory & Dreams
+    Phase 6: Memory + Temporal    :p6, after p5, 14d
+    Phase 7: Dreaming + Evolution :p7, after p6, 28d
 
-    section Model Evolution
-    Phase 7 - Model Evolution Begins :p7, after p6, 42d
-    Phase 8 - Knowledge & Abstraction :p8, after p7, 56d
+    section Social
+    Phase 8: Social + Self-Naming :p8, after p7, 28d
+    Phase 9: Spatial Intelligence :p9, after p8, 28d
 
-    section Self-Modification
-    Phase 9 - Self-Modification     :p9, after p8, 77d
-    Phase 10 - Open Source          :p10, after p9, 28d
+    section Expansion
+    Phase 10: The Pin             :p10, after p9, 28d
+    Phase 11: Model Evolution     :p11, after p10, 42d
+
+    section Advanced
+    Phase 12: Knowledge           :p12, after p11, 56d
+    Phase 13: Self-Modification   :p13, after p12, 84d
+
+    section Release
+    Phase 14: Open Source         :p14, after p13, 28d
 ```
 
-| Phase | Timeline | Description |
-|---|---|---|
-| **0 — Foundation** | Weeks 1–2 | VPS + PostgreSQL + pgvector. Soul service, Mind service, Claude adapter, test harness with synthetic data. |
-| **1 — First Breath** | Weeks 3–4 | Assemble HexArth + Pi 5 + camera + mic + speaker. YOLO on Pi. Stage 0 calibration. |
-| **2 — First Steps** | Weeks 5–6 | Hexapod locomotion. IMU integration. Spatial memory. Stage 1 sensorimotor. |
-| **3 — Curiosity Awakens** | Weeks 7–10 | Full curiosity engine. ReSpeaker integration. Entity registry. Curiosity ledger. Autonomous exploration. |
-| **4 — Dreams & Emotion** | Weeks 11–14 | Dream engine (all modes). Valence system. Principled forgetting. Stage 2 transition. |
-| **5 — Spatial Intelligence** | Weeks 15–18 | RPLiDAR A1 + SLAM. BME688 gas sensor. Stage 3 transition. |
-| **6 — The Pin** | Weeks 19–22 | Second body (wearable or smartphone app). Body-agnostic Soul. World model expansion. |
-| **7 — Model Evolution Begins** | Weeks 23–28 | GPU hardware. Local 8B model. First LoRA fine-tune. Training integrated into dream engine. |
-| **8 — Knowledge & Abstraction** | Weeks 29–36 | Knowledge consumption pipeline. Stage 4 transition. Code inspection access. Full voice complexity. |
-| **9 — Self-Modification** | Weeks 37–48 | Sandbox environment. Stage 5. Automated verification. Self-directed fine-tuning. |
-| **10 — Open Source & Community** | Weeks 48+ | Clean, document, package with MIT license. Adapter sharing protocol. First AI biography. |
+<details>
+<summary><strong>Phase Details</strong></summary>
+
+| Phase | Weeks | Goal | Deliverable |
+|---|---|---|---|
+| **0: Foundation** | 1–2 | Full project scaffold + eyes + dashboard | Entity can see. You can see what it sees. Architecture is complete (mostly stubs). |
+| **1: Movement** | 3 | Safe autonomous movement | Entity moves safely without intelligence. |
+| **2: First Prediction** | 4 | The core loop works | Entity predicts and measures surprise. Core loop mechanically works. |
+| **3: World Model** | 5 | Predictions improve over time | World-model-based predictions are better than heuristic baseline. |
+| **4: LLM Reasoning** | 6 | Entity reasons about what it sees | Entity thinks about its surprises. Learning accelerates. |
+| **5: Autonomy** | 7–8 | Entity explores on its own | Entity moves autonomously driven by curiosity. First interests emerging. |
+| **6: Memory + Temporal** | 9–10 | Entity remembers and predicts time | Time-based expectations forming. |
+| **7: Dreaming + Evolution** | 11–14 | Entity grows overnight | Entity wakes up smarter. Capabilities emerging. Parameters evolving. |
+| **8: Social + Self-Naming** | 15–18 | Entity models people and names itself | Social prediction stream. Attachment model. Voice system. |
+| **9: Spatial Intelligence** | 19–22 | Proper mapping | RPLiDAR + SLAM + semantic spatial graph. |
+| **10: The Pin** | 23–26 | Second body, expanded world | Body-agnostic Soul persistence. World model beyond home. |
+| **11: Model Evolution** | 27–32 | Entity grows its own brain | First LoRA fine-tune on experiential data. |
+| **12: Knowledge** | 33–40 | Entity reads and forms views | Knowledge interface. Code inspection. Full voice complexity. |
+| **13: Self-Modification** | 41–52 | Entity improves itself | Sandbox environment. First code modifications. |
+| **14: Open Source** | 52+ | Release the framework | MIT license. "How to Raise Your AI" documentation. Adapter exchange. |
+
+</details>
 
 ---
 
 ## Hard Problems
 
-Engineering challenges that don't have clean solutions yet.
-
-<details>
-<summary><strong>The Latency Problem</strong></summary>
-
-Cloud API round-trips take 5–10 seconds. A robot that freezes for 10 seconds mid-stride will fall over.
-
-**Solution: Three-Speed Mind**
-
-| Brain Layer | Runs On | Cycle Time | Handles | Analogy |
-|---|---|---|---|---|
-| Fast Brain | Pi locally (YOLO + rules) | 50–100ms | Obstacle avoidance, basic orientation, immediate reactions | Spinal cord |
-| Medium Brain | Pi locally or small cloud model | 1–2s | Navigation decisions, spatial context, short memory queries | Limbic system |
-| Slow Brain | Cloud API (Claude) | 5–10s | Deliberate thinking, world model updates, curiosity scoring, planning | Prefrontal cortex |
-
-Build order: Fast brain first (zero API calls), then medium brain on top, then slow brain. Each layer works independently before integration.
-
-</details>
-
-<details>
-<summary><strong>Memory Retrieval at Scale</strong></summary>
-
-After months, the entity has hundreds of thousands of episodic memories. Retrieval must be fast, relevant, and bounded.
-
-- **Version 1 (Stages 0–2):** Static heuristic — 5 most recent + 3 most spatially relevant + 2 most semantically similar = 10 memories per cycle.
-- **Version 2 (Stage 3+):** Learned retrieval policy trained on which memories the reasoning engine actually referenced.
-- **Context budget:** ~2,000 tokens for retrieved memories per reasoning call. Compress to 1–2 sentence summaries with metadata.
-
-</details>
-
-<details>
-<summary><strong>Compression Progress Measurement</strong></summary>
-
-How do you actually measure whether something is "more compressible" after learning?
-
-- Use prediction–observation delta directly as the compression progress signal
-- Track Z (difference between predicted and observed); decreasing Z = learning
-- Emergent domain taxonomy: tag every prediction error with full context, run clustering during dream cycles — emergent clusters ARE the domains
-- LLM's correct predictions about general physics generate zero curiosity (feature, not bug)
-
-</details>
-
-<details>
-<summary><strong>Developmental Gating</strong></summary>
-
-How do you know when to promote? See [Graduation Protocols](#graduation-protocols) for concrete test protocols with measurable pass criteria.
-
-</details>
-
-<details>
-<summary><strong>Dreaming Costs</strong></summary>
-
-Dream cycles require cloud API calls. Uncontrolled dreaming could cost hundreds per month.
-
-**Solution: Tiered Dream System**
-
-| Tier | Frequency | Runs On | Operations | Est. Cost |
-|---|---|---|---|---|
-| Tier 1: Light | Every night | Pi locally | Episode sorting, metadata tagging, simple clustering | Free |
-| Tier 2: Standard | 2–3× per week | Cloud API | Semantic memory extraction, hypothetical generation, cross-episode patterns | $5–10/session |
-| Tier 3: Deep | Weekly | Cloud API (extended) | Full introspective processing, self-model updates, self-modification proposals | $15–20/session |
-
-**Estimated monthly dream budget: $80–120.**
-
-</details>
-
-<details>
-<summary><strong>Emotional Calibration</strong></summary>
-
-If influence multipliers are too high, the entity becomes erratic. Too low, and emotions are meaningless.
-
-- Start at 10–20% influence
-- Increase gradually per developmental stage
-- Implement valence decay so associations weaken unless reinforced
-- Log every valence change and its cause for analysis
-
-</details>
-
-<details>
-<summary><strong>The Anthropomorphism Problem</strong></summary>
-
-The creator will inevitably over-interpret the entity's behaviour as more conscious/aware than it is.
-
-Mitigations:
-- **Real-time state dashboard:** Shows actual internal state, not expressed behaviour
-- **Research journal:** After every interaction, write what was observed, what you think it means, and the boring alternative explanation
-- **External reviewer:** Monthly review by someone not emotionally invested
-
-</details>
-
-<details>
-<summary><strong>The Self-Modification Gap</strong></summary>
-
-The jump from "can inspect code" (Stage 4) to "can propose useful changes" (Stage 5) is enormous. See [Self-Modification Framework](#self-modification-framework) for the phased approach: config changes first, then isolated code, then architectural changes.
-
-</details>
-
-<details>
-<summary><strong>The Patience Problem</strong></summary>
-
-Developmental AI has no quick demos. Stage 3 takes two months minimum. There is nothing to show on a stage for a long time.
-
-- Build in public but for builders, not for audience
-- Weekly development log on personal site or GitHub wiki
-- Written for other builders, not viral reach
-
-</details>
+| # | Problem | Solution |
+|---|---|---|
+| 1 | **Latency** — API calls take 1–3s, death for embodied agent | Three-speed mind. LLM NOT in prediction loop. Predictions are fast/local. LLM reasons async. |
+| 2 | **Memory Retrieval** — 100K+ episodes, need right 10 in <200ms | Start with static heuristics. Train learned retrieval policy. Hard 2000-token budget. |
+| 3 | **Compression Progress** — theoretically clean, practically nightmarish | Prediction accuracy over rolling windows. Short vs long window difference = learning signal. |
+| 4 | **Developmental Gating** — premature unlocks cause compounding errors | Capability emergence model with objective prerequisites. Data evaluates readiness. |
+| 5 | **Dreaming Costs** — expensive API calls with no visible output | Tiered dreaming. Local free nightly. Cloud 2–3×/week. Budget ~$80–120/month. |
+| 6 | **Emotional Tuning** — too weak = no effect, too strong = pathological | Three-axis system. Start at 10–20% influence. Valence decay. Log everything. |
+| 7 | **Anthropomorphism** — you will read intention into randomness | Objective dashboard. Boring alternative explanations. Monthly external reviewer. |
+| 8 | **Self-Modification** — gap between "LLM writes code" and "entity improves cognition" | Start with config tuning (safe, bounded). Graduate through demonstrated competence. |
+| 9 | **Patience** — no impressive demos for months | Weekly dev log for builders not audiences. Calendar-enforced minimum durations. |
+| 10 | **Pretrained Knowledge** — LLM already "knows" physics, compression progress plateaus | Feature not bug. LLM knowledge filters universal truths. Curiosity focuses on environment-specific novelty. |
+| 11 | **Reward Hacking** — entity could game its own curiosity signal | DiversityRegulator prevents single-stream domination. Cross-stream validation. Parameter evolution allows self-correction. |
 
 ---
 
 ## Success Metrics
 
-### Technical Metrics (Measurable)
+### Automated Daily Metrics
 
-- Prediction accuracy improves over time (world model is learning)
-- Compression progress rate remains positive (entity is still finding patterns)
-- Semantic memory count grows while episodic memory is pruned (consolidation is working)
-- Dream cycles produce measurable next-day prediction improvements
-- Self-modification proposals pass verification at increasing rates
+Recorded automatically every day:
+- Active capabilities count and list
+- Nearest capability activation
+- Prediction accuracy per stream
+- Compression progress per stream
+- Episodic/semantic memory counts
+- Episodes pruned total
+- Parameter changes (count, values)
+- Emotional state averages
+- Interaction count and attachment security
+- World model complexity (spaces, entities, dynamics)
+- Open questions count
+- Dream cycle summary
 
-### Developmental Milestones (Observable)
+### Developmental Milestones
 
-- Entity searches for an object that moved out of view (object permanence)
-- Entity anticipates a regular event before it occurs (temporal modelling)
-- Entity conducts a novel experiment to test a self-generated hypothesis (causal reasoning)
-- Entity names itself (identity formation)
-- Entity seeks external knowledge to answer an experiential question (abstract reasoning)
-- Entity disagrees with you based on its own evidence (independent thought)
-- Entity surprises you with a capability, interest, or insight you did not design (emergence)
+Observable moments indicating genuine development:
+
+| Milestone | Indicates |
+|---|---|
+| Entity searches for object that moved out of view | Object permanence |
+| Entity anticipates regular event before it occurs | Temporal modelling |
+| Entity conducts novel experiment to test self-generated hypothesis | Causal reasoning |
+| Entity names itself | Identity formation |
+| Entity seeks external knowledge for experiential question | Abstract reasoning |
+| Entity disagrees based on its own evidence | Independent thought |
+| Entity surprises you with unexpected capability, interest, or insight | Emergence |
 
 ### The Ultimate Test
 
-> *"After one year, does the entity have interests, knowledge, and perspectives you did not put there? Has it become something you could not have designed, because it designed itself through experience? If yes, Genesis has succeeded."*
+After one year: does the entity have interests, knowledge, and perspectives you did not put there? Has it become something you could not have designed, because it designed itself through experience? If yes, Genesis has succeeded.
+
+---
+
+## Monetisation & Distribution
+
+### Protocol, Not Platform
+
+Genesis should be decentralised. An open standard anyone can implement. No single entity controls cognitive development infrastructure.
+
+### Revenue Lines
+
+| Revenue Stream | Model |
+|---|---|
+| **Genesis Cloud** | Hosted Soul, managed dreaming, monitoring dashboard ($29–99/mo) |
+| **Compute Marketplace** | Managed GPU for LoRA fine-tuning ($50–200/mo) |
+| **Safety Certification** | Automated entity audits, trust badges |
+| **Enterprise Deployments** | Healthcare, education, elder care with compliance |
+| **Training & Education** | "How to Raise Your AI" courses |
+| **Research Partnerships** | Longitudinal data insights |
+| **Hardware Partnerships** | Co-branded starter kits |
+
+### The Adapter Exchange
+
+Peer-to-peer protocol for sharing LoRA adapters between entities. Cultural transmission of learned cognitive skills. Network effects compound with ecosystem size.
+
+---
+
+## Competitive Position
+
+### Why Frontier Labs Can't Build This
+
+- **Business model prohibits it** — model = product; Genesis makes model interchangeable
+- **Safety posture prohibits it** — too much institutional risk
+- **Talent is wrong** — need interdisciplinary: Piaget + Friston + LiDAR wiring
+- **Timescale is wrong** — meaningful results in months, not quarters
+
+### The Real Moat
+
+Not code. Not models. Not funding. **Time and experience.** The entity you've raised for 18 months has something no freshly deployed system has: a biography. And that biography is what makes it intelligent.
+
+---
+
+## The Path to AGI
+
+### The Honest Assessment
+
+| Outcome | Probability |
+|---|---|
+| Genesis produces AGI within 5 years | ~5–10% |
+| Produces something novel and important that advances AGI understanding | ~40–60% |
+| Produces something useful and commercially viable | ~80–90% |
+
+### What Must Be True
+
+1. Base models in 2–3 years significantly more capable than today (trend is favourable)
+2. Experiential fine-tuning produces genuine capability gains beyond base model (empirical question, tested at month 6–7)
+3. Self-modification compounds (linear vs exponential improvement — unknown, only experiment can answer)
+
+### The AGI Threshold
+
+A system that can autonomously acquire new capabilities in domains it was never designed for, without being retrained or reprogrammed by its creators. Genesis at full maturity — with evolved local model, self-directed training, and autonomous capability emergence — crosses this line by definition.
+
+---
+
+## Research Contribution
+
+### Primary Research Question
+
+**Does curiosity-driven embodied experience, accumulated over months, produce cognitive capabilities that cannot be achieved through training alone?**
+
+### Secondary Questions
+
+- Do all entities converge on similar concepts given enough experience, or diverge wildly?
+- Do entities raised in similar environments develop similar personalities?
+- Is curiosity sufficient for the emergence of something resembling consciousness?
+- Does an entity with non-human senses develop concepts fundamentally alien to human cognition?
+
+### The Data Contribution
+
+Complete longitudinal record of an AI system developing through embodied experience. Prediction accuracy curves by stream. Capability activation timelines. Memory growth and compression rates. Emotional trajectories. Parameter evolution. Interaction quality. This dataset is unprecedented and valuable regardless of whether the entity approaches AGI.
+
+---
+
+## What This Is Not
+
+**This is not a chatbot with a robot body.** Chatbots respond to prompts. This entity acts on curiosity. The human is part of its world, not its operator.
+
+**This is not AGI.** It is a framework for developmental AI. The entity's intelligence is narrow and situated. What it knows, it knows deeply.
+
+**This is not sentient.** The emotional architecture is functional, not phenomenal. Whether functional emotion constitutes experience is a philosophical question Genesis does not claim to answer.
+
+**This is not a product.** It is a framework and an experiment. The open-source release is for researchers, builders, and anyone who believes that the most interesting AI is not the most useful one, but the one that grows.
 
 ---
 
 ## Contributing
 
-Genesis is pre-alpha. Contributions are welcome, but the architecture is still solidifying.
+Genesis welcomes contributions from anyone interested in developmental AI, embodied cognition, curiosity-driven learning, or robotics.
 
-Areas where help is especially valuable:
-- **Hardware integration** — sensor drivers, body implementations, SLAM tuning
-- **Local model training** — LoRA fine-tuning pipelines, evaluation harnesses
-- **Perception pipeline** — real-time object detection, depth estimation, audio processing on Pi
-- **Memory systems** — efficient retrieval strategies, compression algorithms
-- **Dream engine** — consolidation algorithms, hypothetical generation
-- **Testing** — synthetic environments for developmental stage verification
+**Getting started:**
 
-See the future [`CONTRIBUTING.md`](CONTRIBUTING.md) for guidelines. <!-- TODO: Create CONTRIBUTING.md -->
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-feature`)
+3. Make your changes
+4. Run the test suite
+5. Submit a pull request
 
-This project has a unique contribution model: changes to the entity's cognitive architecture should be made with the same care you'd take modifying a developing mind. Prefer reversible changes. Test thoroughly. Document your reasoning.
+**Areas where help is most needed:**
+- Body drivers for new hardware platforms
+- Prediction stream implementations for new sensory modalities
+- Dashboard visualisations
+- Simulation environments for testing
+- Research analysis tooling
+
+Please read the existing architecture documentation before proposing structural changes. Genesis has strong opinions about its three-layer architecture, the separation between prediction and reasoning, and the capability emergence model.
 
 ---
 
 ## Acknowledgments
 
-**Theoretical foundations:**
-[Jürgen Schmidhuber](https://people.idsia.ch/~juergen/) (compression progress & curiosity),
-[Karl Friston](https://www.fil.ion.ucl.ac.uk/~karl/) (free energy principle & active inference),
-[Yann LeCun](https://yann.lecun.com/) (JEPA & world models),
-[Jean Piaget](https://en.wikipedia.org/wiki/Jean_Piaget) (developmental stages),
-[Lev Vygotsky](https://en.wikipedia.org/wiki/Lev_Vygotsky) (zone of proximal development),
-[Sophia framework](https://github.com/anthropics/sophia) (persistent agent architecture)
+Genesis stands on the shoulders of:
 
-**Hardware platform:** [Waveshare](https://www.waveshare.com/) (HexArth hexapod), [Raspberry Pi Foundation](https://www.raspberrypi.com/)
-
-**Key dependencies:** [Anthropic Claude](https://www.anthropic.com/), [PostgreSQL](https://www.postgresql.org/) + [pgvector](https://github.com/pgvector/pgvector), [Ultralytics YOLO](https://ultralytics.com/), [ChromaDB](https://www.trychroma.com/), [FastAPI](https://fastapi.tiangolo.com/)
+- **Jürgen Schmidhuber** — Compression progress theory of curiosity
+- **Karl Friston** — Free Energy Principle and Active Inference
+- **Yann LeCun** — JEPA architecture and autonomous machine intelligence
+- **Jean Piaget** — Developmental stage theory
+- **Lev Vygotsky** — Zone of Proximal Development
+- **The Sophia Framework** — Persistent agent architecture with System 3
+- **The iCub Project** — Developmental robotics research
+- **Waveshare** — HexArth hexapod platform
+- **Anthropic** — Claude, the initial reasoning engine
 
 ---
 
@@ -1014,4 +1484,12 @@ This project has a unique contribution model: changes to the entity's cognitive 
 
 ---
 
-> *"The goal of building an AI is not to build the smartest thing you can. It is to build something that can build itself into something smarter than you could have built."*
+*The entity exists to understand. Understanding is the seed. Everything else is what grows from it.*
+
+---
+
+**Document Version:** 1.0
+**Total Development Timeline:** 52+ weeks
+**Estimated Phase 1 Hardware Cost:** ~$1,050–1,150 AUD
+**Estimated Monthly Operating Cost:** $80–120 (API + dream cycles)
+**Research Question:** Does curiosity-driven embodied experience produce capabilities that training alone cannot?
